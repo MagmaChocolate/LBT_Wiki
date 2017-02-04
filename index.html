@@ -1,0 +1,35 @@
+<!--
+  auther : MagmaChocolate
+  lang : php, ja-jp
+-->
+<!--
+/**
+* アクセスはここで受けて、レスポンスを変化させる
+* getで値は渡す
+* echoはこことsearchのみ
+
+* ## URL option
+* @param mode (string) [ view | edit | search ] 処理モードの指定
+* @param page (int) ページ番号、viewとeditの時に有効
+* @param write (boolean) 編集前の読み込みはfalse、編集後の書き込みはtrue、editの時有効
+* @param word (string) 検索文字列
+*/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>LBT_Wiki</title>
+  <meta charset="utf-8" />
+  <script src="./resource/view.js"></script>
+  <link href="./resource/view.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./resource/font-awesome/css/font-awesome.min.css">
+</head>
+<body>
+<header>
+  <div class="side-menu-button">
+    <i class="fa fa-bars fa-lg"></i>
+  </div>
+  <textarea class="search-text"></textarea>
+</header>
+</body>
+</html>
