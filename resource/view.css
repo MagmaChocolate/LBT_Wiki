@@ -1,0 +1,33 @@
+/*
+  relation : index.php
+  auther : MagmaChocolate
+  lang : css, ja-jp
+*/
+
+header{
+  height: 54px;
+  background-color: #eaecf0;
+}
+.fa-bars{
+  padding-top: 15px;
+  text-align: center;
+  color: #222;
+}
+div .search-area{
+  background-color: white;
+  height: 34px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #222;
+}
+.fa-search{
+  margin-top: 10px;
+}
+.search-text{
+  height: 34px;
+}
+
+
+nav .side-menu-area{
+  background-color: #eaecf0;
+}
