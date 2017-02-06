@@ -144,3 +144,8 @@ div.main-text-in-section p{ /* 文章 */
   margin-bottom: 16px;
   line-height: 1.5em;
 }
+
+
+img.relation-entry-img{
+  margin: 0px;
+}
