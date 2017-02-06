@@ -23,9 +23,11 @@ div .search-area{
 .fa-search{
   margin-top: 10px;
 }
-.search-text{
+input.search-text{
   height: 34px;
   font-size: 16px;
+  border:none;
+  background:none;
 }
 
 /*サイドメニュー*/
@@ -64,7 +66,7 @@ div .search-area{
 
 
 /* 記事 */
-h1{ /* タイトル */
+div.main-contents h1{ /* タイトル */
   font-size: 1.7em;
   font-family: 'Linux Libertine','Georgia','Times',serif;
   margin-top: 20px;
@@ -86,12 +88,9 @@ i.fa-pencil{
 }
 
 ul.breadcrumb-list{ /* パンくずリスト */
-  background-color: #eaecf0;
-  margin-top: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
+  margin-top: 2px;
+  padding-left: 0px;
+  font-size: 1.1em;
 }
 ul.breadcrumb-list li.breadcrumb-contents{
   display: inline;
@@ -102,10 +101,8 @@ ul.breadcrumb-list li.breadcrumb-contents:before{
 ul.breadcrumb-list li:first-child:before {
 content: ''; /* 最初のli要素から>>記号を消す */
 }
-
-
-div.description{ /* 簡易説明 */
-  margin-top: 10px;
+ul.breadcrumb-list li:last-child {
+  font-weight: bold;
 }
 
 
@@ -114,9 +111,41 @@ div.eyecatch{ /* アイキャッチ画像 */
   background-image: url("./img/xlr-200x118.jpg");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 100% auto;
+  background-size: auto 100%;
   width: 100%;
   height: 190px;
   box-sizing: border-box;
   border: solid 1px #222;
+  background-color: #00F;
+}
+
+
+div.description{ /* 簡易説明 */
+  margin-top: 8px;
+  margin-bottom: 16px;
+  line-height: 1.5em;
+}
+
+
+div.main-text h2{ /* セクション区切り */
+  border-bottom: solid 1px #eaecf0;
+}
+div.main-text h2 i.fa-caret-down,
+div.main-text h2 i.fa-caret-up{
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+div.main-text div.main-text-in-section{
+  display: none;
+}
+div.main-text-in-section p{ /* 文章 */
+  margin-top: 8px;
+  margin-bottom: 16px;
+  line-height: 1.5em;
+}
+
+
+img.relation-entry-img{
+  margin: 0px;
 }
