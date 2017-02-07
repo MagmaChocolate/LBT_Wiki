@@ -139,13 +139,17 @@ div.main-text-area h2 i.fa-angle-up{
   margin-left: 5px;
   margin-right: 5px;
 }
-div.main-text-area > div{
+div.main-text-area > div{  /* 文章 */
   display: none;
 }
-div.main-text-in-section p{ /* 文章 */
+div.main-text-area > div.main-text > p{  /* 段落 */
   margin-top: 8px;
   margin-bottom: 16px;
   line-height: 1.5em;
+}
+div.main-text img{
+  width: 80%;
+  margin: auto;
 }
 
 
@@ -153,8 +157,6 @@ div.main-text-in-section p{ /* 文章 */
 footer{  /* フッター */
   margin-top: 50px;
   padding-bottom: 10px;
-  margin-left: 0px !important;
-  margin-right: 0px !important;
   background-color: #eaecf0;
 }
 

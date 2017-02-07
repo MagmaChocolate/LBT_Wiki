@@ -20,4 +20,12 @@ function initSection(){
     $(this).next('div').toggle();
   });
 }
+
+/**
+ * 本文の画像をセンタリングするbootstrapのclass名を付加する
+ */
+function initImgCenter(){
+  $('div.main-text img').addClass('center-block');
+}
+initImgCenter();
 initSection();
