@@ -10,13 +10,12 @@
 */
 function initSection(){
   $('div.main-text h2').on('click',function (){
-  	$(this).next('div').toggle();
-    if($('i',this).hasClass('fa-caret-down')){
-      $('i',this).removeClass('fa-caret-down');
-      $('i',this).addClass('fa-caret-up');
-    }else if ($('i',this).hasClass('fa-caret-up')) {
-      $('i',this).removeClass('fa-caret-up');
-      $('i',this).addClass('fa-caret-down');
+    if($('i',this).hasClass('fa-angle-down')){
+      $('i',this).removeClass('fa-angle-down');
+      $('i',this).addClass('fa-angle-up');
+    }else if ($('i',this).hasClass('fa-angle-up')) {
+      $('i',this).removeClass('fa-angle-up');
+      $('i',this).addClass('fa-angle-down');
     }
   });
 }
