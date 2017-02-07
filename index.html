@@ -1,0 +1,151 @@
+<!--
+  auther : MagmaChocolate
+  lang : php, ja-jp
+-->
+<!--
+/**
+* アクセスはここで受けて、レスポンスを変化させる
+* getで値は渡す
+* echoはこことsearchのみ
+
+* ## URL option
+* @param mode (string) [ view | edit | search ] 処理モードの指定
+* @param page (int) ページ番号、viewとeditの時に有効
+* @param write (boolean) 編集前の読み込みはfalse、編集後の書き込みはtrue、editの時有効
+* @param word (string) 検索文字列
+*/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>LBT_Wiki</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- include FontAwesome -->
+  <link rel="stylesheet" href="./resource/font-awesome/css/font-awesome.min.css">
+  <!-- include Bootstrap -->
+  <link href="./resource/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="drawer drawer--left ">
+<!-- サイドメニュー -->
+<nav class="side-menu-area drawer-nav">
+  <ul class="list-area drawer-menu">
+    <li class="list-contents menu-home"><i class="fa fa-home fa-lg"></i><div class="list-text">ホーム</div></li>
+    <li class="list-contents menu-category"><i class="fa fa-list-ul fa-lg"></i><div class="list-text">カテゴリ</div></li>
+    <li class="list-contents menu-random"><i class="fa fa-random fa-lg"></i><div class="list-text">おまかせ</div></li>
+    <li class="list-blank"></li>
+    <li class="list-contents menu-newpage"><i class="fa fa-file-o fa-lg"></i><div class="list-text">新規ページ</div></li>
+    <li class="list-contents menu-admin"><i class="fa fa-cog fa-lg"></i><div class="list-text">管理メニュー</div></div></li>
+  </ul>
+</nav>
+
+
+<!-- メインコンテンツ -->
+<div class="main-area">
+  <div class="container">
+    <div class="row"> <!-- ヘッダー部分 -->
+      <header class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-2"><i class="fa fa-bars fa-2x drawer-toggle"></i></div>
+          <div class="col-xs-9 search-area">
+            <div class="row">
+              <div class="col-xs-2"><i class="fa fa-search fa-lg" ></i></div>
+                <form method="GET" action="search.php">
+                  <input class="search-text col-xs-10" type="text" name="search" value="検索フィード" />
+                </form>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+
+
+    <div class="main-contents">  <!-- 記事部分 -->
+      <h1>タイトル</h1>
+      <div class="tools"><i class="fa fa-pencil fa-2x"></i></div>
+    </div>
+    <ul class="breadcrumb-list">  <!-- パンくずリスト -->
+      <li class="breadcrumb-contents">例！</li>
+      <li class="breadcrumb-contents">サンプル</li>
+      <li class="breadcrumb-contents">例えば</li>
+    </ul>
+    <div class="eyecatch" style="background-image:url('./resource/img/xlr-600x300.jpg')"></div> <!-- アイキャッチ画像 -->
+    <div class="description">
+      簡単な説明文、検索結果にはここの文章が表示されるようになっている。自動生成でもいいしユーザが書き込んでもいいが、書き込みユーザがこの簡易説明と本文の違いを意識する必要がある
+    </div>
+    <div class="main-text"> <!-- 記事本文 -->
+      <h2><i class="fa fa-angle-down fa-1x"></i>セクション区切り</h2>
+      <div class="main-text-in-section">
+        <p>段落で落とすサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプル</p>
+      </div>
+      <h2><i class="fa fa-angle-down fa-1x"></i>セクション区切り</h2>
+      <div class="main-text-in-section">
+        <p>段落で落とすサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプル</p>
+      </div>
+      <h2><i class="fa fa-angle-down fa-1x"></i>セクション区切り</h2>
+      <div class="main-text-in-section">
+        <p>段落で落とすサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプル</p>
+      </div>
+    </div>
+  </div> <!-- class="container" -->
+
+
+    <footer class="footer">  <!-- フッター -->
+      <div class="last-edit">
+        <i class="fa fa-history"></i>最終更新: 9ヶ月前、名無しさん<i class="fa fa-angle-double-right fa-1x"></i>
+      </div>
+
+      <div class="relation-entry">  <!-- 関連記事 -->
+        <h2>関連記事</h2>
+        <div class="content">
+          <a href="hoge">
+            <div class="img-rapper"><div class="img" style="background-image: url('./resource/img/xlr-600x300.jpg')"></div></div>  <!-- 関連記事のアイキャッチ画像 -->
+            <div class="title">関連記事はこれだ</div>
+          </a>
+          <a href="hoge">
+            <div class="img-rapper"><div class="img" style="background-image: url('./resource/img/xlr-200x118.jpg')"></div></div>  <!-- 関連記事のアイキャッチ画像 -->
+            <div class="title">関連記事はこれか？</div>
+          </a>
+          <a href="hoge">
+            <div class="img-rapper"><div class="img" style="background-image: url('./resource/img/xlr-600x300.jpg')"></div></div>  <!-- 関連記事のアイキャッチ画像 -->
+            <div class="title">関連記事はこっちかも</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="copy-write">
+        <h3>LBT_Wiki</h3>
+        <div class="text">
+          このサイトの全てに対し無断転載を禁じます。
+          Copywrite 2017 LBT部のみなさん.
+        </div>
+      </div>
+      <div class="links">
+        <a href="hoge">ヘルプ</a>
+        <a href="hoge">コンタクト</a>
+      </div>
+    </footer>
+  <!-- </div> -->
+</div>
+
+
+<!-- Include JQery -->
+<script src="./resource/jquery/jquery-3.1.1.slim.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="./resource/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+
+<!-- drawer.css -->
+<link rel="stylesheet" href="./resource/drawer/css/drawer.min.css">
+<!-- jquery & iScroll -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+<script src="./resource/iscroll/iscroll.js"></script>
+<!-- drawer.js -->
+<script src="./resource/drawer/js/drawer.min.js"></script>
+<script>$(document).ready(function(){$('.drawer').drawer();});</script>
+
+<script src="./resource/view.js"></script>
+<link href="./resource/view.css" rel="stylesheet" />
+</body>
+</html>
