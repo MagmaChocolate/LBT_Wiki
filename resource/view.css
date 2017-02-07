@@ -127,19 +127,19 @@ div.description{ /* 簡易説明 */
 }
 
 
-div.main-text h2{ /* セクション区切り */
+div.main-text-area h2{ /* セクション区切り */
   border-bottom: solid 1px #eaecf0;
   font-size: 2em;
   font-family:"Roboto Slab" , Garamond , "Times New Roman" , "游明朝" , "Yu Mincho" , "游明朝体" , "YuMincho" , "ヒラギノ明朝 Pro W3" , "Hiragino Mincho Pro" , "HiraMinProN-W3" , "HGS明朝E" , "ＭＳ Ｐ明朝" , "MS PMincho" , serif;
       /*http://sole-color-blog.com/blog/design/246/*/
 
 }
-div.main-text h2 i.fa-angle-down,
-div.main-text h2 i.fa-angle-up{
+div.main-text-area h2 i.fa-angle-down,
+div.main-text-area h2 i.fa-angle-up{
   margin-left: 5px;
   margin-right: 5px;
 }
-div.main-text div.main-text-in-section{
+div.main-text-area > div{
   display: none;
 }
 div.main-text-in-section p{ /* 文章 */

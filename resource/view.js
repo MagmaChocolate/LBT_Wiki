@@ -9,7 +9,7 @@
  * 本文、セクション区切り<h2>をアコーディオン化するスクリプト
 */
 function initSection(){
-  $('div.main-text h2').on('click',function (){
+  $('div.main-text-area > h2').on('click',function (){
     if($('i',this).hasClass('fa-angle-down')){
       $('i',this).removeClass('fa-angle-down');
       $('i',this).addClass('fa-angle-up');
