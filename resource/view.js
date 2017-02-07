@@ -17,6 +17,7 @@ function initSection(){
       $('i',this).removeClass('fa-angle-up');
       $('i',this).addClass('fa-angle-down');
     }
+    $(this).next().toggle();
   });
 }
 initSection();
