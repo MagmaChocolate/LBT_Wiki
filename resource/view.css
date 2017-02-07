@@ -68,7 +68,8 @@ input.search-text{
 /* 記事 */
 div.main-contents h1{ /* タイトル */
   font-size: 1.7em;
-  font-family: 'Linux Libertine','Georgia','Times',serif;
+  font-family:"Roboto Slab" , Garamond , "Times New Roman" , "游明朝" , "Yu Mincho" , "游明朝体" , "YuMincho" , "ヒラギノ明朝 Pro W3" , "Hiragino Mincho Pro" , "HiraMinProN-W3" , "HGS明朝E" , "ＭＳ Ｐ明朝" , "MS PMincho" , serif;
+      /*http://sole-color-blog.com/blog/design/246/*/
   margin-top: 20px;
   margin-left: 5px;
   padding-bottom: 10px;
@@ -95,10 +96,10 @@ ul.breadcrumb-list{ /* パンくずリスト */
 ul.breadcrumb-list li.breadcrumb-contents{
   display: inline;
 }
-ul.breadcrumb-list li.breadcrumb-contents:before{
+ul.breadcrumb-list li.breadcrumb-contents::before{
   content: ' > '; /* li要素の前に>>記号を追加 */
 }
-ul.breadcrumb-list li:first-child:before {
+ul.breadcrumb-list li:first-child::before {
 content: ''; /* 最初のli要素から>>記号を消す */
 }
 ul.breadcrumb-list li:last-child {
@@ -107,8 +108,7 @@ ul.breadcrumb-list li:last-child {
 
 
 div.eyecatch{ /* アイキャッチ画像 */
-  /*background-image: url("./img/xlr-600x300.jpg");*/
-  background-image: url("./img/xlr-200x118.jpg");
+  /*画像へのリンクはhtmlでdivタグのstyle属性に動的生成する*/
   background-repeat: no-repeat;
   background-position: center;
   background-size: auto 100%;
@@ -129,13 +129,16 @@ div.description{ /* 簡易説明 */
 
 div.main-text h2{ /* セクション区切り */
   border-bottom: solid 1px #eaecf0;
+  font-size: 2em;
+  font-family:"Roboto Slab" , Garamond , "Times New Roman" , "游明朝" , "Yu Mincho" , "游明朝体" , "YuMincho" , "ヒラギノ明朝 Pro W3" , "Hiragino Mincho Pro" , "HiraMinProN-W3" , "HGS明朝E" , "ＭＳ Ｐ明朝" , "MS PMincho" , serif;
+      /*http://sole-color-blog.com/blog/design/246/*/
+
 }
-div.main-text h2 i.fa-caret-down,
-div.main-text h2 i.fa-caret-up{
+div.main-text h2 i.fa-angle-down,
+div.main-text h2 i.fa-angle-up{
   margin-left: 5px;
   margin-right: 5px;
 }
-
 div.main-text div.main-text-in-section{
   display: none;
 }
@@ -146,6 +149,91 @@ div.main-text-in-section p{ /* 文章 */
 }
 
 
-img.relation-entry-img{
-  margin: 0px;
+
+footer{  /* フッター */
+  margin-top: 50px;
+  padding-bottom: 10px;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+  background-color: #eaecf0;
+}
+
+
+footer > div.last-edit{  /* 最終更新 */
+  border-top: solid 1px #c8ccd1;
+  border-bottom: solid 1px #c8ccd1;
+  padding-left: 20px;
+  color: #666;
+  height: 35px;
+  line-height: 35px;
+}
+footer .fa-history{
+  margin-right: 10px;
+  color: #aba6b3;
+}
+footer i.fa-angle-double-right{
+  float: right;
+  color: #aba6b3;
+  margin-right: 20px;
+  line-height: 35px;
+}
+
+
+div.relation-entry{  /* 関連ページ */
+  margin-top: 42px;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 42px;
+}
+div.relation-entry > h2{
+  margin-bottom: 5px;
+  font-size: 1em;
+  color: #999;
+}
+div.relation-entry a{
+  display: block;
+  border: solid 1px #aba6b3;
+}
+div.relation-entry div.img-rapper > div.img{ /* 関連ページ  画像 */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 100%;
+  width: 78px;
+  height: 78px;
+  box-sizing: border-box;
+  background-color: #00F;
+  float: left;
+}
+div.relation-entry div.title{  /* 関連ページ タイトル */
+  margin-left: 75px;
+  padding-left: 15px;
+  line-height: 78px;
+  background-color: white;
+}
+
+
+
+footer >  div.copy-write{  /* コピーライト */
+  margin-left: 15px;
+  margin-right: 15px;
+}
+footer > div.copy-write > h3{
+  font-size: 1em;
+  border-bottom: solid 1px #aba6b3;
+  margin-bottom: 10px;
+}
+footer > div.copy-write > div.text{
+  font-size: 0.875em
+}
+
+
+footer > div.links{/* リンク達 */
+  margin-top: 15px;
+  margin-left: 15px;
+}
+footer > div.links > a::before{
+  content: '・';
+}
+footer > div.links > a:first-child::before{
+  content: '';
 }
