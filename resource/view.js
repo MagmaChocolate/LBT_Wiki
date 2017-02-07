@@ -9,8 +9,8 @@
  * 本文、セクション区切り<h2>をアコーディオン化するスクリプト
 */
 function initSection(){
-  $(this).next('div').toggle();
   $('div.main-text h2').on('click',function (){
+  	$(this).next('div').toggle();
     if($('i',this).hasClass('fa-caret-down')){
       $('i',this).removeClass('fa-caret-down');
       $('i',this).addClass('fa-caret-up');
