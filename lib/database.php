@@ -28,12 +28,29 @@ function thisPageExisting($title){
   return false;
 }
 
+
+/**
+ * 新規記事IDに割り当てられる予定のIDを取得
+ * @return int           新規記事IDになる予定の数値を返す
+ */
+function willNextEntryId(){
+  chdir("../db");  //ワークディレクトリを../dbに変更
+  $json = file_get_contents("all_entry_list.json");
+  $json = mb_convert_encoding($json, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
+  $entryList = json_decode($json,true); //連想配列に変換
+  
+  $NextEntryId = count($entryList) - 1;
+  return $NextEntryId;
+}
+
+
 /**
  * 記事追加時に記事を管理するindexに追記する
  * @param int    $page   記事ID
  * @param string $title  記事タイトル
  * @param string $author 書き込んだユーザ名
  * @param int    $ip     書き込んだIP
+ * @return boolean       成功ならtrue、失敗ならfalse
  */
 function addEntryIndex($page,$title,$author,$ip){
   chdir("../db/index");  //ワークディレクトリを../dbに変更
@@ -71,12 +88,66 @@ function addEntryIndex($page,$title,$author,$ip){
 
   $entryIndex = array_merge($entryIndex,$array);
 
-  $fp = fopen($fileName,"w");
+  $fp = fopen($fileName,"w");  //上書き
   fwrite($fp, sprintf(json_encode($entryIndex)));
   fclose($fp);
+
+  return true;
 }
 
 
+/**
+ * 記事追加時に記事を管理するindexを新規作成
+ * @param string $title  記事タイトル
+ * @param string $author 書き込んだユーザ名
+ * @param int    $ip     書き込んだIP
+ * @return boolean       成功ならtrue、失敗ならfalse
+ */
+function newEmtryIndex($title,$author,$ip){
+  
+  $page = willNextEntryId();
+
+  chdir("../db/index");  //ワークディレクトリを../dbに変更
+  $fileName = $page.".json";
+  $json = file_get_contents($fileName);
+  $json = mb_convert_encoding($json, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
+  $entryIndex = json_decode($json,true); //連想配列に変換
+
+
+
+  date_default_timezone_set('Asia/Tokyo'); //タイムゾーン設定
+  $nowJpTime = array(
+    "year" => date(Y),
+    "month" => date(n),
+    "day" => date(j),
+    "hour" => date(G),
+    "minute" => date(i),
+    "second" => date(s)
+  );
+
+  $array = array(
+    "title" => $title,
+    "ver" => thisPageExisting($page)-1,
+    "day" => array(
+      "year" => $nowJpTime['year'],
+      "month" => $nowJpTime['month'],
+      "day" => $nowJpTime['day'],
+      "hour" => $nowJpTime['hour'],
+      "minute" => $nowJpTime['minute'],
+      "second" => $nowJpTime['second'],
+    ),
+    "author" => $author,
+    "ip" => $ip
+  );
+
+  $entryIndex = array_merge($entryIndex,$array);
+
+  touch($fileName);
+  chmod($fileName,
+  $fp = fopen($fileName,"w");  //上書き
+  fwrite($fp, sprintf(json_encode($entryIndex)));
+  fclose($fp);
+}
 
 /**
  * データベースから情報を出す
@@ -93,7 +164,8 @@ function read_db($page,$backlog){
 /**
  * データを保存する
  * 受け取りはpostでjson形式で送られてくる
- * @param  int page ページ番号
+ * @param  int  page ページ番号
+ * @POST   json
  * @return [type]      [description]
  */
 function write_db($page){
@@ -111,6 +183,11 @@ function write_db($page){
    */
 
 
+  if(thisPageExisting($page)){
+    addEnteyIndex($page,$title,$author,$ip);
+  }else{
+    newEntryIndex($page,$title,$author,$ip);
+  }
 }
 
 ini_set( 'display_errors', 1 ); // エラーログ表示設定
