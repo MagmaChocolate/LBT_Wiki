@@ -101,7 +101,7 @@ function addEntryIndex($page,$title,$author,$ip){
  * @param string $title  記事タイトル
  * @param string $author 書き込んだユーザ名
  * @param int    $ip     書き込んだIP
- * @return boolean       成功ならtrue、失敗ならfalse
+ * @return boolean       成功なら記事ID+1、失敗ならfalse
  */
 function newEmtryIndex($title,$author,$ip){
   
@@ -142,8 +142,11 @@ function newEmtryIndex($title,$author,$ip){
 
   $entryIndex = array_merge($entryIndex,$array);
 
-  touch($fileName);
-  chmod($fileName,
+  touch($fileName);  // ファイル作成
+  chmod($fileName,0777);  // ファイルのパーミッション変更
+  if(!file_exitst($fileName)
+    putLog("database.php wilEntryIndex() インデックスファイルが作成できませんでした。","err");
+    return false;
   $fp = fopen($fileName,"w");  //上書き
   fwrite($fp, sprintf(json_encode($entryIndex)));
   fclose($fp);
@@ -164,11 +167,12 @@ function read_db($page,$backlog){
 /**
  * データを保存する
  * 受け取りはpostでjson形式で送られてくる
- * @param  int  page ページ番号
- * @POST   json
- * @return [type]      [description]
+ * @param  string title 
+ * @param  int    page  ページ番号、省略すると新規作成モードになる
+ * @param  json
+ * @return [type]       [description]
  */
-function write_db($page){
+function write_db($title,$json,$page = null){
   /*
     保存するときにはバージョン管理できるように各バージョンごとに１ファイルの
     テキストファイルを作り、そのファイル名と作成日時を管理ようテキストファイル
@@ -183,10 +187,15 @@ function write_db($page){
    */
 
 
-  if(thisPageExisting($page)){
+  if($page>=0){
+    saveEntryBody($page,$json);
     addEnteyIndex($page,$title,$author,$ip);
-  }else{
-    newEntryIndex($page,$title,$author,$ip);
+    
+  }else if($page==null){
+    $page = willNextEntryId();
+    saveEntryBody($page,$json);
+    newEntryIndex($title,$author,$ip);
+    addAllEntryList($page);
   }
 }
 
