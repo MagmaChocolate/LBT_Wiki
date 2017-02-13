@@ -8,6 +8,34 @@
  * ログイン認証を通さないとデータベース内にアクセスし放題なので対策する
 */
 
+/**
+ * 処理ログをテキストファイルとして吐く関数
+ * @param  string $text 出力する文字列
+ * @param  string $type [err(default) | info infoアイコンが付きます |
+ *                       dir (ver_dumpする）]
+ * @return bool         正常にログを履いたらtrue ダメならfalse
+ */
+function putLog($text,$type = err){
+
+  date_default_timezone_set('Asia/Tokyo'); //タイムゾーン設定
+  $out = date("H:i");
+
+  switch ($type) {
+    case "err":
+      $out .= "ERR,".$text."'";
+      break;
+
+    case "info":
+      $out .= "info,".$text."'";
+      break;
+
+    case "dir":
+      $out .= ver_dump($text);
+      break;
+  }
+  chdir("../log");  //ワークディレクトリを../logに変更
+  file_put_contents(log.log,$out);
+}
 
 /**
  * pageが既存かどうか判断、既存なら最新のバージョン番号+1を返却
@@ -38,7 +66,7 @@ function willNextEntryId(){
   $json = file_get_contents("all_entry_list.json");
   $json = mb_convert_encoding($json, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
   $entryList = json_decode($json,true); //連想配列に変換
-  
+
   $NextEntryId = count($entryList) - 1;
   return $NextEntryId;
 }
@@ -104,7 +132,7 @@ function addEntryIndex($page,$title,$author,$ip){
  * @return boolean       成功なら記事ID+1、失敗ならfalse
  */
 function newEmtryIndex($title,$author,$ip){
-  
+
   $page = willNextEntryId();
 
   chdir("../db/index");  //ワークディレクトリを../dbに変更
@@ -144,9 +172,10 @@ function newEmtryIndex($title,$author,$ip){
 
   touch($fileName);  // ファイル作成
   chmod($fileName,0777);  // ファイルのパーミッション変更
-  if(!file_exitst($fileName)
+  if(!file_exitst($fileName)){
     putLog("database.php wilEntryIndex() インデックスファイルが作成できませんでした。","err");
     return false;
+  }
   $fp = fopen($fileName,"w");  //上書き
   fwrite($fp, sprintf(json_encode($entryIndex)));
   fclose($fp);
@@ -167,7 +196,7 @@ function read_db($page,$backlog){
 /**
  * データを保存する
  * 受け取りはpostでjson形式で送られてくる
- * @param  string title 
+ * @param  string title
  * @param  int    page  ページ番号、省略すると新規作成モードになる
  * @param  json
  * @return [type]       [description]
@@ -190,7 +219,7 @@ function write_db($title,$json,$page = null){
   if($page>=0){
     saveEntryBody($page,$json);
     addEnteyIndex($page,$title,$author,$ip);
-    
+
   }else if($page==null){
     $page = willNextEntryId();
     saveEntryBody($page,$json);
