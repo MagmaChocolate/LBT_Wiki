@@ -4,14 +4,13 @@
     "last-ver": 0,
     "title": "記事名",
     "author": "作者名",
-    "ver": 0,
     "day": {
       "year": 2015,
       "month": 2,
       "_day": 14,
       "hour": 17,
       "minute": 56,
-      "second": 7,
+      "second": 7
     },
     "eyecatch": "img.jpg",
     "category":[
@@ -25,7 +24,6 @@
     "last-ver": 0,
     "title": "SM58",
     "author": "作者名",
-    "ver": 0,
     "day": {
       "year": 2015,
       "month": 2,
@@ -46,7 +44,6 @@
     "last-ver": 0,
     "title": "コンプレッサー88",
     "author": "作者名",
-    "ver": 0,
     "day": {
       "year": 2015,
       "month": 2,
