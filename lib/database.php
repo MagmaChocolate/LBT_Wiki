@@ -18,23 +18,23 @@
 function putLog($text,$type = err){
 
   date_default_timezone_set('Asia/Tokyo'); //タイムゾーン設定
-  $out = date("H:i");
+  $out = date("H:i").",";
 
   switch ($type) {
     case "err":
-      $out .= "ERR,".$text."'";
+      $out .= "ERR,\"".$text."\"\n";
       break;
 
     case "info":
-      $out .= "info,".$text."'";
+      $out .= "info,\"".$text."\"\n";
       break;
 
     case "dir":
-      $out .= ver_dump($text);
+      $out .= "dir,\n".print_r($text,true)."-----------\n";
       break;
   }
   chdir("../log");  //ワークディレクトリを../logに変更
-  file_put_contents(log.log,$out);
+  file_put_contents("log.log",$out,FILE_APPEND);
 }
 
 /**
@@ -229,6 +229,8 @@ function write_db($title,$json,$page = null){
 }
 
 ini_set( 'display_errors', 1 ); // エラーログ表示設定
-chdir("../db");  //ワークディレクトリを../dbに変更
-addEntryIndex(,'')
+// chdir("../db");  //ワークディレクトリを../dbに変更
+// addEntryIndex(0,"タイトル","ななしさん","192.168.0.100");
+$i = ["配列","配列２","３"];
+putLog("ホゲホゲ");
 ?>
