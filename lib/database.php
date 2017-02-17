@@ -156,7 +156,7 @@ function addEntryIndex($page,$title,$author,$ip,$description){
 
   chdir(__DIR__);  // ワークディレクトリを戻す
   chdir("../db/entry/index");  //ワークディレクトリを../dbに変更
-  file_put_contents($fileName,sprintf(json_encode($entryIndex,JSON_UNESCAPED_UNICODE)));
+  file_put_contents($fileName,sprintf(json_encode($entryIndex,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)));
 
   return true;
 }
@@ -212,7 +212,7 @@ function newEntryIndex($page,$title,$author,$ip,$description){
     return false;
   }
 
-  file_put_contents($fileName,sprintf(json_encode($entryIndex,JSON_UNESCAPED_UNICODE)));
+  file_put_contents($fileName,sprintf(json_encode($entryIndex,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)));
   chdir(__DIR__);  // ワークディレクトリを戻す
   chdir("../db/entry/index");  //ワークディレクトリを../dbに変更
   if(!file_exists ($fileName)){
@@ -253,7 +253,7 @@ function saveEntryBody($page,$title,$description,$html){
   // $json = json_encode($arr,JSON_UNESCAPED_SLASES);  // http://qiita.com/shogo807/items/f68dde0d1fe7c07b8939
   chdir(__DIR__);  // ワークディレクトリを戻す
   chdir("../db/entry/body");
-  file_put_contents($fileName,sprintf(json_encode($arr,JSON_UNESCAPED_UNICODE)));
+  file_put_contents($fileName,sprintf(json_encode($arr,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)));
   if(!file_exists($fileName)){
     putLog("database.php saveEntryBody() 記事bodyが作成できませんでした。","err");
     return false;
@@ -329,7 +329,7 @@ function addAllEntryList($page,$title,$author,$category = null,$eyecatch = null)
   }
   chdir(__DIR__);  // ワークディレクトリを戻す
   chdir("../db/");
-  file_put_contents("all_entry_list.json",sprintf(json_encode($entryList,JSON_UNESCAPED_UNICODE)));
+  file_put_contents("all_entry_list.json",sprintf(json_encode($entryList,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)));
   return true;
 }
 
@@ -380,7 +380,7 @@ $author = isset($data["author"]) ? $data["author"] : "名無しさん";
 $eyecatch = isset($data["eyecatch"]) ? $data["eyecatch"] : null;
 $ip = 1234567890;
 
-$newFlag = false;
+$newFlag = true;
   if($newFlag){
     // 新規記事の保存
     saveEntryBody($page,$title,$description,$html);
