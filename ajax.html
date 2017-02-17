@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+  <h1>ajaxサンプル</h1>
+  <button id="update">update</button>
+<script src="./resource/jquery/jquery-3.1.1.slim.min.js"></script>
+<script>
+$("button#update").click(function() {
+    // 多重送信を防ぐため通信完了までボタンをdisableにする
+    var button = $(this);
+    button.attr("disabled", true);
+
+    var data = {
+      title : "タイトル", // タイトル
+      html : "<h1>サンプル<\/h1>\n<p>ほげほげ<\/p>\n・・・",    // 改行はJavascript側で事前に\nにエスケープしておく
+      description : "誤字脱字の修正",        // 概要説明
+      author : "magcho",        // ユーザ名
+      eyecatch: "sample.jpg" // アイキャッチ画像のパス
+    };
+
+    // 通信実行
+    // $.ajax({
+    //     type:"post",                // method = "POST"
+    //     url:"./lib/database.php",        // POST送信先のURL
+    //     data:JSON.stringify(data),  // JSONデータ本体
+    //     contentType: 'application/json', // リクエストの Content-Type
+    //     dataType: "json",           // レスポンスをJSONとしてパースする
+    //     success: function(json_data) {   // 200 OK時
+    //         // JSON Arrayの先頭が成功フラグ、失敗の場合2番目がエラーメッセージ
+    //         if (!json_data[0]) {    // サーバが失敗を返した場合
+    //             alert("Transaction error. " + json_data[1]);
+    //             return;
+    //         }
+    //         // 成功時処理
+    //         location.reload();
+    //     },
+    //     error: function() {         // HTTPエラー時
+    //         alert("Server Error. Pleasy try again later.");
+    //     },
+    //     complete: function() {      // 成功・失敗に関わらず通信が終了した際の処理
+    //         button.attr("disabled", false);  // ボタンを再び enableにする
+    //     }
+    // });
+    $.ajax({
+    url: 'http://lbt_wiki.dev/lib/datadase.php',
+    type:'POST',
+    dataType: 'json',
+    data : JSON.stringify(data),
+    timeout:10000,
+    success: function(data) {
+                  alert("ok");
+    },
+    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                 alert("error");
+           }
+  });
+});
+</script>
+</body>
+</html>
