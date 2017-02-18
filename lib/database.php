@@ -21,6 +21,8 @@ function putLog($text,$type = err){
 
   date_default_timezone_set('Asia/Tokyo'); //タイムゾーン設定
   $out = date("H:i").",";
+  $text = ($text === false) ? "falseが返却されました" : $text;
+  $text = ($text === true) ? "trueが返却されました" : $text;
 
   switch ($type) {
     case "err":
