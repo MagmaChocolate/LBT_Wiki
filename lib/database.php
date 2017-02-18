@@ -338,11 +338,110 @@ function addAllEntryList($page,$title,$author,$category = null,$eyecatch = null)
 /**
  * データベースから情報を出す
  * @param  int    page    ページ番号
- * @param  int    backlog 過去バージョンのデータを引き出したいときに指定、バージョンの詳細は別途info関数で取得する、readのみ有効
- * @return [type]         [description]
+ * @param  int    [ver] 過去バージョンのデータを引き出したいときに指定するオプション
+ *                        バージョンの詳細は別途info関数で取得する
+ * @return array          連想配列を返す、失敗はfalseを返す
+ *         ["title","author","(array)category","eyecatch","html"];
  */
-function read_db($page,$backlog){
+function read_db($page,$ver = null){
+  if($backlog === null){ //最新バージョンを取得
+   // 最新の情報をall_entry_indexから取得
+    chdir(__DIR__);  // ワークディレクトリを戻す
+    chdir("../db");  //ワークディレクトリを../dbに変更
+    $json1 = file_get_contents("all_entry_list.json");
+    $json1 = mb_convert_encoding($json1, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
+    $entryList = json_decode($json1,true); //連想配列に変換
+    foreach ($entryList as $value) {
+      if($value["id"] == $page){
+        $arr = array(
+          "title" => $value["title"],
+          "author" => $value["author"],
+          "category" => $value["category"],
+          "eyecatch" => $value["eyecatch"]
+        );
+        $ver = $value["last-ver"];
+        break;
+      }
+    }
+    if(!isset($arr)){  // 検索で見つからなかっったエラー処理
+      putLog("database.php read_db() 指定された記事id(".$page.")が見つかりませんでした。");
+      return false;
+    }
 
+
+   // 記事本文を取得
+    $fileName = $page."_".$ver.".json";
+    chdir(__DIR__);
+    chdir("../db/entry/body");
+    if(!file_exists($fileName)){
+      putLog("database.php read_db() ".$fileName."が見つかりませんでした");
+      return false;
+    }
+    $json2 = file_get_contents($fileName);
+    $json2 = mb_convert_encoding($json2, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
+    $entryBody = json_decode($json2,true); //連想配列に変換
+
+    $arr = array_merge($arr,array("html" => $entryBody["html"]));
+
+  }else{  // 過去バージョンを取得
+    $indexFileName = $page.".json";
+    chdir(__DIR__);  // ワークディレクトリを戻す
+    chdir("../db/index");  //ワークディレクトリを../dbに変更
+    if(!file_exists($indexFileName)){
+      putLog("database.php read_db() ".$indexFileName."が見つかりませんでした");
+      return false;
+    }
+    $json1 = file_get_contents($indexFileName);
+    $json1 = mb_convert_encoding($json1, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
+    $entryIndex = json_decode($json1,true); //連想配列に変換
+
+    foreach ($entryIndex as $value) {
+      if($value["ver"] == $ver){
+        $arr = array(
+          "title" => $value["title"],
+          "author" => $value["author"]
+        );
+        break;
+      }
+    }
+    if(!isset($arr)){
+      putLog("detabase.php read_db() 指定されたver(".$ver.")が見つかりませんでした");
+      return false;
+    }
+
+   // 記事本文を取得
+    $bodyFileName = $page."_".$ver.".json";
+    chdir(__DIR__);
+    chdir("../db/entry/");
+    if(!file_exists($bodyFileName)){
+      putLog("database.php read_db() ".$bodyFileName."が見つかりませんでした");
+      return false;
+    }
+    $json2 = file_get_contents($bodyFileName);
+    $json2 = mb_convert_encoding($json2, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
+    $entryBody = json_decode($json2,true); //連想配列に変換
+    $arr = array_merge($arr,array("html" => $entryBody["html"]));
+
+   // アイキャッチとカテゴリーを取得
+    chdir(__DIR__);  // ワークディレクトリを戻す
+    chdir("../db");  //ワークディレクトリを../dbに変更
+    $json3 = file_get_contents("all_entry_list.json");
+    $json3 = mb_convert_encoding($json3, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
+    $entryList = json_decode($json3,true); //連想配列に変換
+
+    foreach ($entryList as $value) {
+      if($value["id"] == $page){
+        $arr = array_merge(array("eyecatch" => $value["eyecatch"],"category" => $value["category"]));
+        break;
+      }
+    }
+    if(!isset($arr["id"])){
+      putLog("database.php read_db() 指定された記事id(".$page.")が見つかりませんでした。");
+      return false;
+    }
+  }
+
+  return $arr;
 }
 
 
@@ -382,7 +481,7 @@ $author = isset($data["author"]) ? $data["author"] : "名無しさん";
 $eyecatch = isset($data["eyecatch"]) ? $data["eyecatch"] : null;
 $ip = 1234567890;
 
-$newFlag = true;
+$newFlag = false;
   if($newFlag){
     // 新規記事の保存
     saveEntryBody($page,$title,$description,$html);
@@ -407,5 +506,6 @@ ini_set( 'display_errors', 1 ); // エラーログ表示設定
 // $i = ["音響","マイク","サンプル"];
 // print addAllEntryList(3,"新規記事サンプル","ほげ",$i,"sample.png") ? "success" : "failure";
 
-write_db();
+// write_db();
+putLog(read_db("1"),dir);
 ?>
