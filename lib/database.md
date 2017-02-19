@@ -88,15 +88,16 @@
  * @return boolean         正常終了はtrue、失敗はfalse
  */
 ```
-## read_db($page,$backlog)
+## read_db($page,$ver = null)
 ```
 /**
  * データベースから情報を出す
  * @param  int    page    ページ番号
- * @param  int    backlog 過去バージョンのデータを引き出したいときに指定、バージョンの詳細は別途info関数で取得する、readのみ有効
- * @return [type]         [description]
+ * @param  int    [ver] 過去バージョンのデータを引き出したいときに指定するオプション
+ *                        バージョンの詳細は別途info関数で取得する
+ * @return array          連想配列を返す、失敗はfalseを返す
+ *         ["title","author","(array)category","eyecatch","html"];
  */
-```
 
 ## write_db()
 ```
