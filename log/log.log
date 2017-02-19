@@ -1,0 +1,19 @@
+11:03,ERR,"database.php read_db() 指定された記事idが見つかりませんでした。"
+11:03,ERR,"falseが返却されました"
+11:04,ERR,"database.php read_db() 指定された記事id(3)が見つかりませんでした。"
+11:04,ERR,"falseが返却されました"
+11:05,ERR,"database.php read_db() 指定された記事id(3)が見つかりませんでした。"
+11:05,ERR,"falseが返却されました"
+11:05,ERR,"database.php read_db() 指定された記事id(2)が見つかりませんでした。"
+11:05,ERR,"falseが返却されました"
+11:05,ERR,"Array"
+11:05,dir,
+Array
+(
+    [title] => S＿タイトル
+    [author] => 名無しさん
+    [category] => none
+    [eyecatch] => none
+    [html] => <html><body><h1>ふが</h1></body></html>
+)
+-----------
