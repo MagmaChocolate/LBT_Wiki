@@ -98,11 +98,20 @@
  * @return array          連想配列を返す、失敗はfalseを返す
  *         ["title","author","(array)category","eyecatch","html"];
  */
-
+```
 ## write_db()
 ```
 /**
  * 記事データ本文やインデックスを一括で保存する関数
- * 受け取りはpostでjson形式で送られてくるのでこの関数で受け取る
+ * 受け取りはpostで連想配列形式で送られてくるのでこの関数で受け取る
+ * 投げるデータ形式は
+ * {
+ *  "id": (int), // 省略可、省略時は新規記事扱い
+ *  "title": (string),
+ *  "html": (sring) // 基本的に<body></body>の中身だけ送られる(<body></body>は来ない)
+ *  "description": (string), // 省略可
+ *  "author": (string), // 省略可
+ *  "eyecatch": (string) // 省略可
+ * }
  */
 ```

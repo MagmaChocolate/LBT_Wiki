@@ -16,23 +16,16 @@
 $(function(){
   $('.save').on('click',function(){
     var sendText = {
-      'text':CKEDITOR.instances.visualEditor.getData(),
-      'author': 'MG'
-    };
-    console.log(sendText);
-  });
-});
-$(function(){
-  $('.save').on('click',function(){
-    var sendText = {
+      'page': 4,
+      'title': 'ajaxテスト',
       'html':CKEDITOR.instances.visualEditor.getData(),
-      'author': 'MG'
+      'author': 'MG',
     };
     $.ajax({
       type: 'POST',
-      url: './ajax.php',
+      url: './lib/ajax.php',
       data: sendText,
-      dataType: 'text',  //レスポンスとして受け取ったデータタイプの指定レスポンスは変数dataに格納される
+      dataType: 'json',  //レスポンスとして受け取ったデータタイプの指定レスポンスは変数dataに格納される
       cache: false,
       timeout: 1000
     })
@@ -41,9 +34,6 @@ $(function(){
     })
     .fail(function(data){  // 通信失敗時に呼び出される部分
       console.log(data);
-    })
-    .allways(function(){  // ajaxの通信の結果に関わらず通信処理を終えたらよびだされる部分
-      console.log('Ajax job end');
     });
   });
 });

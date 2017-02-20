@@ -448,30 +448,40 @@ function read_db($page,$ver = null){
 
 /**
  * 記事データ本文やインデックスを一括で保存する関数
- * 受け取りはpostでjson形式で送られてくるのでこの関数で受け取る
+ * 受け取りはpostで連想配列形式で送られてくるのでこの関数で受け取る
+ * 投げるデータ形式は
+ * {
+ *  "id": (int), // 省略可、省略時は新規記事扱い
+ *  "title": (string),
+ *  "html": (sring) // 基本的に<body></body>の中身だけ送られる(<body></body>は来ない)
+ *  "description": (string), // 省略可
+ *  "author": (string), // 省略可
+ *  "eyecatch": (string) // 省略可
+ * }
  */
-function write_db(){
+function write_db($data){
 // function write_db($title,$page = null){
   /*
     保存するときにはバージョン管理できるように各バージョンごとに１ファイルの
     テキストファイルを作り、そのファイル名と作成日時を管理ようテキストファイル
     で管理する
   */
-  $newFlag = !isset($page); //新規記事ならばtrue、既存はfalse
+  $newFlag = !isset($data["page"]); //新規記事ならばtrue、既存はfalse
 
-/*
-  $json = file_get_contents('php://input');  // http://php-archive.net/php/ajax-json/
-  $data = json_decode($json, true);  // POSTで受け取ったjsonを$dataへ代入
+
+  // $json = file_get_contents('php://input');  // http://php-archive.net/php/ajax-json/
+  // $data = json_decode($json, true);  // POSTで受け取ったjsonを$dataへ代入
 
   $page = isset($data["page"]) ? $data["page"] : willNextEntryId();
   $title = $data["title"];
   $html = $data["html"];
-  $description = $data["description"];
+  $description = isset($data["description"]) ? $data["description"] : "none";
   $author = isset($data["author"]) ? $data["author"] : "名無しさん";
   $eyecatch = isset($data["eyecatch"]) ? $data["eyecatch"] : null;
 
   $ip = ip2long($_SERVER["REMOTE_ADDR"]); // アクセス元のipアドレスを取得し整数値に変換して代入
-*/
+
+/*デバッグ用のダミーコンテンツ、要らなきゃ消してくれ
 // $page = isset($data["page"]) ? $data["page"] : willNextEntryId();
 $page = 1;
 $title = "S＿タイトル";
@@ -482,30 +492,21 @@ $eyecatch = isset($data["eyecatch"]) ? $data["eyecatch"] : null;
 $ip = 1234567890;
 
 $newFlag = false;
+*/
   if($newFlag){
     // 新規記事の保存
-    saveEntryBody($page,$title,$description,$html);
-    newEntryIndex($page,$title,$author,$ip,$description);
-    addAllEntryList($page,$title,$author,$category,$eyecatch);
+    if(!saveEntryBody($page,$title,$description,$html)){return false;}
+    if(!newEntryIndex($page,$title,$author,$ip,$description)){return false;}
+    if(!addAllEntryList($page,$title,$author,$category,$eyecatch)){return false;}
   }else{
     // 既存記事の保存
-    saveEntryBody($page,$title,$description,$html);
-    addEntryIndex($page,$title,$author,$ip,$description);
-    addAllEntryList($page,$title,$author,$category,$eyecatch);
+    if(!saveEntryBody($page,$title,$description,$html)){return false;}
+    if(!addEntryIndex($page,$title,$author,$ip,$description)){return false;}
+    if(!addAllEntryList($page,$title,$author,$category,$eyecatch)){return false;}
   }
+  return true;
 }
 
 ini_set( 'display_errors', 1 ); // エラーログ表示設定
 
-// print thisPageExisting("記事名") ? "true" : "false";
-// print getEntryVer(2);
-// print willNextEntryId();
-// print addEntryIndex(0,"記事タイトル変更したよ","アンノウン",0120117117) ? "success" : "failure";
-// print newEntryIndex("新規記事サンプル","ほげ",0120117117) ? "success" : "failure";
-// print saveEntryBody(5,"新規記事サンプル","新規記事の作成サンプル","<html><body><h1>新規記事サンプル</h1></body></html>") ? "success" :"failure";
-// $i = ["音響","マイク","サンプル"];
-// print addAllEntryList(3,"新規記事サンプル","ほげ",$i,"sample.png") ? "success" : "failure";
-
-// write_db();
-putLog(read_db("1"),dir);
 ?>
