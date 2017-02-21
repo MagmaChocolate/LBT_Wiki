@@ -19,11 +19,11 @@ function sendContents(){
   /**
    * JSにjsonで結果を返却する関数
    * @param $data 返却する内容の連想配列
-   * @return json [ERR_no_title | ]
+   * @return json
    */
-  function returnJson($retrunData){
-    header("Content-Type: application/json; charset=utf-8");
-    echo json_encode($returnData); //連想配列を変換して出力
+  function returnJson($returnData){
+    header("Content-Type: application/json");
+    echo json_encode($returnData,true); //連想配列を変換して出力
   }
 
   if(!isset($_POST["title"])){
@@ -40,11 +40,13 @@ function sendContents(){
   $saveData = $_POST;
   if(write_db($saveData)){
     // 保存成功
-    $retrunData = ["message" => "success"];
+    putLog('asdfasdf');
+    $returnData = ["message" => "success"];
   }else{
-    $retrunData = ["message" => "ERR_save_database()"];
+    // 保存失敗
+    $returnData = ["message" => "ERR_save_database()"];
   }
-  returnJson($retrunData);
+  returnJson($returnData);
   return true;
 }
 sendContents();
