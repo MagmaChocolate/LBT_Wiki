@@ -38,10 +38,11 @@ function sendContents(){
   }
 
   $saveData = $_POST;
-  if(write_db($saveData)){
+  $return = write_db($saveData);
+  if($return !== false){
     // 保存成功
     putLog('asdfasdf');
-    $returnData = ["message" => "success"];
+    $returnData = ["message" => "success","page" => $return];
   }else{
     // 保存失敗
     $returnData = ["message" => "ERR_save_database()"];

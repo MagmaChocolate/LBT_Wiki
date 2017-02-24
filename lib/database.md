@@ -113,5 +113,6 @@
  *  "author": (string), // 省略可
  *  "eyecatch": (string) // 省略可
  * }
+ * @return {int} 作成した記事id
  */
 ```

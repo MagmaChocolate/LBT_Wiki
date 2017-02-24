@@ -458,6 +458,7 @@ function read_db($page,$ver = null){
  *  "author": (string), // 省略可
  *  "eyecatch": (string) // 省略可
  * }
+ * @return {int} 作成した記事idを返す
  */
 function write_db($data){
 // function write_db($title,$page = null){
@@ -504,7 +505,7 @@ $newFlag = false;
     if(!addEntryIndex($page,$title,$author,$ip,$description)){return false;}
     if(!addAllEntryList($page,$title,$author,$category,$eyecatch)){return false;}
   }
-  return true;
+  return $page;
 }
 
 ini_set( 'display_errors', 1 ); // エラーログ表示設定
