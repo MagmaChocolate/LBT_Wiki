@@ -10,7 +10,7 @@
  * @return [type] [description]
  */
 function notFound(){
-  require ("notfound.php");
+  require (__DIR__."/notfound.php");
   return true;
 }
 
@@ -22,8 +22,7 @@ function notFound(){
 */
 function view(){
   //処理部の読み込み
-  chdir(__DIR__);
-  require('./database.php');
+  require(__DIR__.'/database.php');
 
   $page = $_GET["page"];
   if(isset($$_GET["ver"])){
@@ -39,11 +38,10 @@ function view(){
 
 
   // 出力部の読み込みと実行
-  chdir(__DIR__);
-  require('./header.php');
-  require('./print_entry.php');
-  require('./footer-area.php');
-  require('./footer.php');
+  require(__DIR__.'/header.php');
+  require(__DIR__.'/print_entry.php');
+  require(__DIR__.'/footer-area.php');
+  require(__DIR__.'/footer.php');
 
 }
 view();

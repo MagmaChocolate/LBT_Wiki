@@ -5,7 +5,7 @@
  */
 function init(){
   if($_GET["cmd"] == "view"){
-    require("./lib/view.php");
+    require(__DIR__."/lib/view.php");
   }
 }
 init();
