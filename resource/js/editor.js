@@ -121,11 +121,6 @@ $(function(){
     $('.entry-config').css('display','none');
     $('.before,.eidtor-overlay').css('display','none');
   });
-
-            $('.entry-config').css('display','none');
-            $('.before,.eidtor-overlay').css('display','none');
-
-
 });
 
 /**

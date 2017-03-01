@@ -90,4 +90,24 @@ CKEDITOR.editorConfig = function( config ) {
   //upload imageプラグイン
 	config.extraPlugins = 'uploadimage';
 	config.uploadUrl = '/uploader/upload.php';
+	// スペルチェック機能OFF
+  config.scayt_autoStartup = false;
+	// 編集領域にclassを指定したい
+	config.bodyClass = 'main-text-area';
+
+  //エディターに外部スタイルシート読み込み
+  config.contentsCss = 'resource/ckeditor/view.css';
+
+	// フィルタリングのホワイトリスト
+	config.extraAllowedContent = ['h2','header'];
+
+	CKEDITOR.stylesSet.add( 'lbt_wiki', [
+	    // Block-level styles.
+	    { name: '見出し', element: 'h2',attributes: { 'class': 'section' }},
+
+	    // Inline styles.
+	    { name: '本文', element: 'p'},
+	]);
+	// For inline style definition.
+config.stylesSet = 'lbt_wiki';
 };
