@@ -444,6 +444,35 @@ function read_db($page,$ver = null){
   return $arr;
 }
 
+/**
+ * 記事idから既存の記事の情報を返す
+ * @param  {int} $page 記事id
+ * @return {array}     {"title"=>"記事タイトル","category"=>["音響","マイク"]}
+ *                     エラーはfalseを返す
+ */
+function fetchInfo($page){
+  if(!thisPageExisting($title)){
+    // 新規記事はfalse
+    return false;
+  }else{
+    // 既存記事は処理続行
+    chdir(__DIR__);  // ワークディレクトリを戻す
+    chdir("../db");  //ワークディレクトリを../dbに変更
+    $json = file_get_contents("all_entry_list.json");
+    $json = mb_convert_encoding($json, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
+    $entryList = json_decode($json,true); //連想配列に変換
+
+    foreach ($entryList as $value) {
+      if($value['id'] == $page){
+        $title = $value["title"];
+        $category = $value["category"];
+        $out = ["title" => $title,"category" => $category];
+        return $out;
+      }
+    }
+
+  }
+}
 
 
 /**

@@ -70,6 +70,25 @@ function postData(){
   //   console.log(data);
   // });
 }
+$(function(){
+  var sendText = {
+    'page': page
+  };
+  console.log(sendText);
+  $.ajax({
+    type: 'POST',
+    url: './lib/fetchhtml.php',
+    data: sendText,
+    dataType: 'json',  //レスポンスとして受け取ったデータタイプの指定レスポンスは変数dataに格納される
+    cache: false,
+    timeout: 1000,
+  })
+  .done(function(data){  // 通信成功時に呼び出される部分
+    CKEDITOR.instances.visualEditor.setData(data.html);
+    console.log(data);
+  });
+});
+
 
 /**
  * ローディングアニメーションを表示する関数
@@ -103,6 +122,13 @@ function showLoading(mode,text){
   }
 }
 
+// $(function (){
+//   if(newFlag===false){
+//     // 既存の編集
+//     $('div.entry-config,div.eidtor-overlay').css('display','none');
+//   }
+// });
+
 /**
  * イベントの設置
  */
@@ -112,12 +138,14 @@ function showLoading(mode,text){
  */
 $(function(){
   $('.before .submit-button').on('click',function(){
-    if($('.title > input').val() === ''){
+    var titleText = $('.title > input').val();
+    if(titleText === ''){
       $('.title > span.essential').text('※必ず入力してね！！');
       $('.title > input').css({'border-color':'red','box-shadow':'0px 0px 15px red'});
       $('.title > input').focus();
       return false;
     }
+    $('div.title').text(titleText+'を編集中です');
     $('.entry-config').css('display','none');
     $('.before,.eidtor-overlay').css('display','none');
   });
@@ -137,5 +165,14 @@ $(function(){
 $(function(){
   $('.after .submit-button').on('click',function(){
     postData();
+  });
+});
+
+/**
+ * ヘッダの歯車押した時のイベント
+ */
+$(function(){
+  $('header > div.show-before-config').on('click',function(){
+    $('div.before').css('display','block');
   });
 });

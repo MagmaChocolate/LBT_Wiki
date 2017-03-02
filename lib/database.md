@@ -99,6 +99,15 @@
  *         ["title","author","(array)category","eyecatch","html"];
  */
 ```
+## fetchInfo($page)
+```
+/**
+ * 記事idから既存の記事の情報を返す
+ * @param  {int} $page 記事id
+ * @return {array}     {"title"=>"記事タイトル","category"=>["音響","マイク"]}
+ *                     エラーはfalseを返す
+ */
+```
 ## write_db()
 ```
 /**
