@@ -47,10 +47,10 @@ function putLog($text,$type = err){
 
 /**
  * pageが既存かall_entry_listから判断
- * @param  string  $title 記事タイトル
+ * @param  string  $page 記事タイトル
  * @return boolean        既存ならtrue、新規はfalse
  */
-function thisPageExisting($title){
+function thisPageExisting($page){
   chdir(__DIR__);  // ワークディレクトリを戻す
   chdir("../db");  //ワークディレクトリを../dbに変更
   $json = file_get_contents("all_entry_list.json");
@@ -58,7 +58,7 @@ function thisPageExisting($title){
   $entryList = json_decode($json,true); //連想配列に変換
 
   foreach ($entryList as $value) {
-    if($value['title'] == $title){
+    if($value['id'] == $page){
       return true;
     }
   }

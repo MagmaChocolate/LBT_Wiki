@@ -11,11 +11,11 @@
 ```
 
 
-## thisPageExisting($title)
+## thisPageExisting($page)
 ```
 /**
  * pageが既存かall_entry_listから判断
- * @param  string  $title 記事ID
+ * @param  string  $page 記事ID
  * @return boolean        既存ならtrue、新規はfalse
  */
 ```
