@@ -37,8 +37,11 @@ $host .= $_SERVER['HTTP_HOST'];
   <div class="container">
     <div class="row"> <!-- ヘッダー部分 -->
       <header class="col-xs-12">
+        <div class="row times">
+          <div class="col-xs-2 icon-button"><i class="fa fa-3x fa-times"></i></div>
+        </div>
         <div class="row">
-          <div class="col-xs-2"><i class="fa fa-bars fa-2x drawer-toggle"></i></div>
+          <div class="col-xs-2 icon-button drawer-toggle"><i class="fa fa-bars fa-2x"></i></div>
           <div class="col-xs-9 search-area">
             <div class="row">
               <div class="col-xs-2"><i class="fa fa-search fa-lg" ></i></div>
@@ -49,4 +52,15 @@ $host .= $_SERVER['HTTP_HOST'];
           </div>
         </div>
       </header>
+    </div>
+
+    <div class="search-overlay"></div>
+    <div class="search-result-area">
+      <div class="row">
+        <div class="col-xs-12 search-result">
+          <table class="search-result">
+            <tr class="allSearchEntry"><td><i class="fa fa-file-text-o"></i>全文検索</td></tr>
+          </table>
+        </div>
+      </div>
     </div>

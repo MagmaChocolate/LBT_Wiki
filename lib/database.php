@@ -474,6 +474,25 @@ function fetchInfo($page){
   }
 }
 
+/**
+ * 記事タイトルとのそページ番号を取得し連想はいれつで返す
+ * leration: search.php
+ * @return [type] [description]
+ */
+function fetchAllIndex(){
+  chdir(__DIR__);  // ワークディレクトリを戻す
+  chdir("../db");  //ワークディレクトリを../dbに変更
+  $json = file_get_contents("all_entry_list.json");
+  $json = mb_convert_encoding($json, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
+  $entryList = json_decode($json,true); //連想配列に変換
+
+  $out = [];
+  foreach ($entryList as $value) {
+    $out[] = ["title" => $value["title"],"page" => $value["id"],"category" => $value["category"]];
+  }
+  return $out;
+}
+
 
 /**
  * 記事データ本文やインデックスを一括で保存する関数
