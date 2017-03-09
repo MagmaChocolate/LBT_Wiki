@@ -527,6 +527,7 @@ function write_db($data){
   $description = isset($data["description"]) ? $data["description"] : "none";
   $author = isset($data["author"]) ? $data["author"] : "名無しさん";
   $eyecatch = isset($data["eyecatch"]) ? $data["eyecatch"] : null;
+  $category = isset($data["category"]) ? $data["category"] : null;
 
   $ip = ip2long($_SERVER["REMOTE_ADDR"]); // アクセス元のipアドレスを取得し整数値に変換して代入
 
