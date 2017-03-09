@@ -34,14 +34,15 @@
 function postData(){
   if($('.category select').eq(0).val() !== "" && $('.category select').eq(0).val() !== undefined){
     var category = [];
+    for (var i = 0;i <= 2;i++){
+      if($('.category select').eq(i).val() !== "" && $('.category select').eq(i).val() !== undefined){
+        category.push($('.category select').eq(i).val());
+      }
+    }
   }else{
     var category = 'none';
   }
-  for (var i = 0;i <= 2;i++){
-    if($('.category select').eq(i).val() !== "" && $('.category select').eq(i).val() !== undefined){
-      category.push($('.category select').eq(i).val());
-    }
-  }
+
   // var category = [];
   // category[0] = $('.category select').eq(0).val();
   console.log(category);
