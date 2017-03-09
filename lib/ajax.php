@@ -41,7 +41,6 @@ function sendContents(){
   $return = write_db($saveData);
   if($return !== false){
     // 保存成功
-    putLog('asdfasdf');
     $returnData = ["message" => "success","page" => $return];
   }else{
     // 保存失敗
