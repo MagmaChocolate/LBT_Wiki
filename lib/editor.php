@@ -11,14 +11,13 @@
 <body>
   <script>
     var newFlag = <?php echo !isset($info)?"true":"false"?>;
-    var page = <?php echo $_GET["page"];?>;
   </script>
   <div class="entry-config before">
     <div class="text"><?php echo isset($info)?$info["title"]."を編集中":"新規記事の作成"?></div>
     <div class="title area" >
       <span class="title">記事タイトル</span>
       <span class="essential">※必須です</span>
-      <input class="form" type="text" <?php if(isset($info))echo 'value="'.$info["title"].'"'?>/>
+      <input class="form" id="title-form" type="text" <?php if(isset($info))echo 'value="'.$info["title"].'"'?>/>
     </div>
     <div class="category area" >
       <span class="title">カテゴリー</span>
@@ -45,7 +44,7 @@
     <div class="descpretion area">
       <span class="title">今回の編集の概要</span>
       <span class="option">※任意です</span>
-      <textarea class="form" placeholder="（例） 誤字脱字の修正"></textarea>
+      <textarea class="form" id="description" placeholder="（例） 誤字脱字の修正"></textarea>
     </div>
     <div class="author area">
       <span class="title">ニックネーム</span>
