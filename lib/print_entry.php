@@ -27,7 +27,8 @@ $fetchData["html"] = replace_entry($fetchData);
 <ul class="breadcrumb-list">  <!-- パンくずリスト -->
   <?php
   if($fetchData["category"] != "none"){
-    foreach ($category as $value) {
+    echo '<li class="breadcrumb-contents">LBT_Wiki</li>';
+    foreach ($fetchData["category"] as $value) {
       echo '<li class="breadcrumb-contents">'.$value.'</li>';
     }
   }
