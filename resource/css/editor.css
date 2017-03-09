@@ -1,0 +1,210 @@
+/*
+  relation : index.php
+  auther : MagmaChocolate
+  lang : css, ja-jp
+*/
+div.eidtor-overlay{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1;
+}
+div.entry-config{
+  box-sizing: border-box;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  margin: 5% 5%;
+  width: 90%;
+  background: white;
+  z-index: 2;
+  border: solid 2px black;
+}
+div > div.text{
+  box-sizing: border-box;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 1.5em;
+  border-bottom: solid 2px blue;
+}
+div > div.area::before{
+  content: "";
+  display: block;
+  height: 1.5em;
+  width: 6px;
+  position: absolute;
+  background: blue;
+  border-radius: 3px;
+}
+div > div.area{
+  font-size: 1.1em;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 30px;
+}
+span.title{
+  padding-left: 15px;
+  font-weight: bold;
+}
+span.essential{
+  color: red;
+  font-weight: bold;
+  font-size: 0.8em;
+}
+span.option{
+  color: rgb(90, 90, 90);
+  font-weight: bold;
+  font-size: 0.8em;
+}
+div > input.form{
+  box-sizing: border-box;
+  border: solid 1px black;
+  position:relative;
+  margin-top: 15px;
+  margin-right: 15px;
+  padding-left: 10px;
+  width: 100%;
+  height: 40px;
+  border-radius: 3px;
+  font-size: 16px;
+  background: rgb(248, 248, 248);
+}
+div > input.form:focus{
+  border: solid 1px orange;
+}
+div.category select {
+  box-sizing: border-box;
+  border: solid 1px black;
+  font-size: 16px;
+  height: 40px;
+  width: 100%;
+  margin-top: 10px;
+  padding-left: 20px;
+}
+div.category select:focus{
+  border: solid 1px orange;
+}
+div.category select:first{
+  margin-top: 15px;
+}
+div.submit-button{
+  box-sizing: border-box;
+  border-left: 1px solid rgba(0,0,0,0.1);
+  background: #36c;
+  width: 100px;
+  color: white;
+  font-size: 1.3em;
+  font-weight: bold;
+  float: right;
+  text-align: center;
+  line-height: 54px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  margin-right: 10px;
+}
+div.submit-button:active{
+  background: blue;
+}
+div.after textarea{
+  box-sizing: border-box;
+  border: solid 1px black;
+  position:relative;
+  margin-top: 15px;
+  margin-right: 15px;
+  padding: 10px 10px;
+  width: 100%;
+  height: 100px;
+  border-radius: 3px;
+  font-size: 16px;
+  background: rgb(248, 248, 248);
+}
+div.upper-mask{
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  top: -50px;
+  left: 0px;
+  background: white;
+  z-index: 3;
+}
+div.loading-animation{
+  box-sizing: border-box;
+  position: fixed;
+  text-align: center;
+  top: 0px;
+  left: 0px;
+  width: 80%;
+  height: 50px;
+  line-height: 50px;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: -50px;
+  z-index: 2;
+  border: solid 2px black;
+  border-radius: 3px;
+  background: rgb(220, 220, 220);
+  color: black;
+}
+div.loading-animation > span.text{
+  font-size: 1.3em;
+}
+
+header{
+  height: 54px;
+  background-color: white;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1)
+}
+header > div.icon{
+  width: 54px;
+  box-sizing: border-box;
+  border-right: 1px solid rgba(0,0,0,0.1);
+  float: left;
+}
+div.icon > i.fa-arrow-left{
+  padding-left: 15px;
+  height: 54px;
+  line-height: 54px;
+}
+header > div.title{
+  float: left;
+  line-height: 54px;
+  width: 200px;
+  font-size: 1.3em;
+  padding: 0 8px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+div.show-before-config{
+  float: right;
+  height: 54px;
+  box-sizing: border-box;
+  border-left: solid 1px rgba(0,0,0,0.1);
+}
+div.show-before-config > i.fa-cog{
+  padding-right: 15px;
+  padding-left: 15px;
+  line-height: 54px;
+}
+header > div.save{
+  box-sizing: border-box;
+  border-left: 1px solid rgba(0,0,0,0.1);
+  background: #36c;
+  width: 80px;
+  color: white;
+  font-size: 1.3em;
+  font-weight: bold;
+  float: right;
+  text-align: center;
+  line-height: 54px;
+}
+
+
+
+
+.show-before-config{
+  display: none;
+}

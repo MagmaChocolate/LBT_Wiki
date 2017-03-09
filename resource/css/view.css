@@ -1,0 +1,324 @@
+/*
+  relation : index.php
+  auther : MagmaChocolate
+  lang : css, ja-jp
+*/
+
+header{
+  height: 54px;
+  background-color: #eaecf0;
+}
+div.times{
+  box-sizing: border-box;
+  height: 54px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  padding-left: 15px;
+  background: #eaecf0;
+  z-index: 3;
+}
+.fa-bars{
+  padding-top: 15px;
+  text-align: center;
+  color: #222;
+}
+.fa-times{
+  padding-top: 5px;
+  text-align: center;
+  color: #222;
+}
+div.search-area{
+  background-color: white;
+  height: 34px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #222;
+}
+.fa-search{
+  margin-top: 10px;
+}
+input.search-text{
+  height: 34px;
+  font-size: 16px;
+  border:none;
+  background:none;
+}
+/* 検索結果 */
+/* overlay */
+.search-overlay{
+  position: fixed;
+  width: 100%;
+  /*heightはjqyeryで設定*/
+  top: 54px;
+  left: 0px;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+div.search-result-area{
+  position: absolute;
+  width: 100%;
+  /*heightはjqyeryで設定*/
+  top: 54px;
+  left: 0px;
+  display: none;
+  background: white;
+}
+table.search-result{
+  background: white;
+  padding: 10px;
+  width: 100%;
+}
+tr{
+  height: 70px;
+  display: block;
+  border-bottom: solid 1px #eee;
+}
+td{
+  position: absolute;
+  padding-left: 0px;
+  font-size: 1.3em;
+  font-weight: bold;
+  line-height: 70px;
+  font-size: 1.5em;
+  width: 100%;
+}
+td > a{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+tr.allSearchEntry{
+  border-bottom: solid 1px #c8ccd1;
+  height: 50px;
+}
+tr.allSearchEntry > td,
+tr.allSearchEntry > i{
+  line-height: 50px;
+  font-weight: normal;
+  font-size: 1.2em;
+}
+td .fa{
+  padding-left: 20px;
+  padding-right: 10px;
+  color: #bbbdbf;
+  font-size: 1.5em
+}
+img.search-result-img{
+  height: 70px;
+  width: auto;
+  margin-left: 0px;
+  background: #eee;
+  margin-right: 20px;
+}
+
+/*サイドメニュー*/
+.drawer-nav{
+  background-color: #eaecf0 ;
+}
+.list-contents{
+  display:block;
+  height: 49px;
+  border-bottom: solid 1px #222;
+  position: relative;
+  background-color: white;
+}
+.list-contents i{ /*icon font*/
+  float: left;
+  height: 49px;
+  width: 20px;
+  line-height: 49px;
+  margin-left: 10px;
+}
+.list-text{
+  float: left;
+  height: 49px;
+  line-height: 49px;
+  margin-left: 10px;
+}
+.list-blank{
+  height: 20px;
+  background-color: #eaecf0;
+  border-bottom: solid 1px #222;
+}
+.menu-newpage{
+  border-top: solid 0px #222;
+  box-sizing: border-box;
+}
+
+
+/* 記事 */
+div.main-contents h1{ /* タイトル */
+  font-size: 1.7em;
+  font-family:"Roboto Slab" , Garamond , "Times New Roman" , "游明朝" , "Yu Mincho" , "游明朝体" , "YuMincho" , "ヒラギノ明朝 Pro W3" , "Hiragino Mincho Pro" , "HiraMinProN-W3" , "HGS明朝E" , "ＭＳ Ｐ明朝" , "MS PMincho" , serif;
+      /*http://sole-color-blog.com/blog/design/246/*/
+  margin-top: 20px;
+  margin-left: 5px;
+  padding-bottom: 10px;
+}
+
+div.tools{  /* 記事操作ツールのボタン */
+  width: 100%;
+  height: 46px;
+  border-top: solid #eaecf0 1px;
+  border-bottom: solid #c8ccd1 1px;
+}
+i.fa-pencil{
+  float: right;
+  margin-right: 10px;
+  height: 46px;
+  line-height: 46px;
+}
+
+ul.breadcrumb-list{ /* パンくずリスト */
+  margin-top: 2px;
+  padding-left: 0px;
+  font-size: 1.1em;
+}
+ul.breadcrumb-list li.breadcrumb-contents{
+  display: inline;
+}
+ul.breadcrumb-list li.breadcrumb-contents::before{
+  content: ' > '; /* li要素の前に>>記号を追加 */
+}
+ul.breadcrumb-list li:first-child::before {
+content: ''; /* 最初のli要素から>>記号を消す */
+}
+ul.breadcrumb-list li:last-child {
+  font-weight: bold;
+}
+
+
+div.eyecatch{ /* アイキャッチ画像 */
+  /*画像へのリンクはhtmlでdivタグのstyle属性に動的生成する*/
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 100%;
+  width: 100%;
+  height: 190px;
+  box-sizing: border-box;
+  border: solid 1px #222;
+  background-color: #bebebe;
+}
+
+
+div.description{ /* 簡易説明 */
+  margin-top: 8px;
+  margin-bottom: 16px;
+  line-height: 1.5em;
+}
+
+
+div.main-text-area h2{ /* セクション区切り */
+  border-bottom: solid 1px #eaecf0;
+  font-size: 2em;
+  font-family:"Roboto Slab" , Garamond , "Times New Roman" , "游明朝" , "Yu Mincho" , "游明朝体" , "YuMincho" , "ヒラギノ明朝 Pro W3" , "Hiragino Mincho Pro" , "HiraMinProN-W3" , "HGS明朝E" , "ＭＳ Ｐ明朝" , "MS PMincho" , serif;
+      /*http://sole-color-blog.com/blog/design/246/*/
+
+}
+div.main-text-area h2 i.fa-angle-down,
+div.main-text-area h2 i.fa-angle-up{
+  margin-left: 5px;
+  margin-right: 5px;
+}
+div.main-text-area > div{  /* 文章 */
+  display: none;
+}
+div.main-text-area > div.main-text > p{  /* 段落 */
+  margin-top: 8px;
+  margin-bottom: 16px;
+  line-height: 1.5em;
+}
+div.main-text img{
+  width: 80%;
+  margin: auto;
+}
+
+
+
+footer{  /* フッター */
+  margin-top: 50px;
+  padding-bottom: 10px;
+  background-color: #eaecf0;
+}
+
+
+footer > div.last-edit{  /* 最終更新 */
+  border-top: solid 1px #c8ccd1;
+  border-bottom: solid 1px #c8ccd1;
+  padding-left: 20px;
+  color: #666;
+  height: 35px;
+  line-height: 35px;
+}
+footer .fa-history{
+  margin-right: 10px;
+  color: #aba6b3;
+}
+footer i.fa-angle-double-right{
+  float: right;
+  color: #aba6b3;
+  margin-right: 20px;
+  line-height: 35px;
+}
+
+
+div.relation-entry{  /* 関連ページ */
+  margin-top: 42px;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 42px;
+}
+div.relation-entry > h2{
+  margin-bottom: 5px;
+  font-size: 1em;
+  color: #999;
+}
+div.relation-entry a{
+  display: block;
+  border: solid 1px #aba6b3;
+}
+div.relation-entry div.img-rapper > div.img{ /* 関連ページ  画像 */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 100%;
+  width: 78px;
+  height: 78px;
+  box-sizing: border-box;
+  background-color: #00F;
+  float: left;
+}
+div.relation-entry div.title{  /* 関連ページ タイトル */
+  margin-left: 75px;
+  padding-left: 15px;
+  line-height: 78px;
+  background-color: white;
+}
+
+
+
+footer >  div.copy-write{  /* コピーライト */
+  margin-left: 15px;
+  margin-right: 15px;
+}
+footer > div.copy-write > h3{
+  font-size: 1em;
+  border-bottom: solid 1px #aba6b3;
+  margin-bottom: 10px;
+}
+footer > div.copy-write > div.text{
+  font-size: 0.875em
+}
+
+
+footer > div.links{/* リンク達 */
+  margin-top: 15px;
+  margin-left: 15px;
+}
+footer > div.links > a::before{
+  content: '・';
+}
+footer > div.links > a:first-child::before{
+  content: '';
+}
