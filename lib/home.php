@@ -12,7 +12,7 @@ $host .= $_SERVER['HTTP_HOST'];
   <link rel="manifest" href="/manifest.json">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000">
   <meta name="theme-color" content="#ffffff">
-  
+
   <title>LBT_Wiki</title>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -54,12 +54,12 @@ $host .= $_SERVER['HTTP_HOST'];
 <!-- サイドメニュー -->
 <nav class="side-menu-area drawer-nav">
   <ul class="list-area drawer-menu">
-    <li class="list-contents menu-home"><i class="fa fa-home fa-lg"></i><div class="list-text">ホーム</div></li>
-    <li class="list-contents menu-category"><i class="fa fa-list-ul fa-lg"></i><div class="list-text">カテゴリ</div></li>
-    <li class="list-contents menu-random"><i class="fa fa-random fa-lg"></i><div class="list-text">おまかせ</div></li>
+    <a href="<?php echo $host?>"><li class="list-contents menu-home"><i class="fa fa-home fa-lg"></i><div class="list-text">ホーム</div></li></a>
+    <a href="<?php echo $host."/index.php?cmd=category"?>"><li class="list-contents menu-category"><i class="fa fa-list-ul fa-lg"></i><div class="list-text">カテゴリ</div></li></a>
+    <a href="<?php echo $host."/index.php?cmd=random"?>"><li class="list-contents menu-random"><i class="fa fa-random fa-lg"></i><div class="list-text">おまかせ</div></li></a>
     <li class="list-blank"></li>
-    <li class="list-contents menu-newpage"><i class="fa fa-file-o fa-lg"></i><div class="list-text">新規ページ</div></li>
-    <li class="list-contents menu-admin"><i class="fa fa-cog fa-lg"></i><div class="list-text">管理メニュー</div></div></li>
+    <a href="<?php echo $host."/index.php?cmd=edit"?>"><li class="list-contents menu-newpage"><i class="fa fa-file-o fa-lg"></i><div class="list-text">新規ページ</div></li></a>
+    <a href="<?php echo $host."/index.php?cmd=admin"?>"><li class="list-contents menu-admin"><i class="fa fa-cog fa-lg"></i><div class="list-text">管理メニュー</div></div></li></a>
   </ul>
 </nav>
 
