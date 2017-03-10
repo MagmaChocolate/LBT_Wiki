@@ -22,7 +22,7 @@ $fetchData["html"] = replace_entry($fetchData);
 ?>
 <div class="main-contents">  <!-- 記事部分 -->
   <h1><?php echo $fetchData["title"];?></h1>
-  <div class="tools"><i class="fa fa-pencil fa-2x"></i></div>
+  <div class="tools"><a href="<?php echo $host?>/index.php?cmd=edit&page=<?php echo $_GET["page"]?>"><i class="fa fa-pencil fa-2x"></i></a></div>
 </div>
 <ul class="breadcrumb-list">  <!-- パンくずリスト -->
   <?php
