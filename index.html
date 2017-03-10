@@ -18,6 +18,14 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+  <!-- favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000">
+  <meta name="theme-color" content="#ffffff">
+  
   <title>LBT_Wiki</title>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -46,13 +54,16 @@
   <div class="container">
     <div class="row"> <!-- ヘッダー部分 -->
       <header class="col-xs-12">
+        <div class="row times">
+          <div class="col-xs-2 icon-button"><i class="fa fa-3x fa-times"></i></div>
+        </div>
         <div class="row">
-          <div class="col-xs-2"><i class="fa fa-bars fa-2x drawer-toggle"></i></div>
+          <div class="col-xs-2 icon-button drawer-toggle"><i class="fa fa-bars fa-2x"></i></div>
           <div class="col-xs-9 search-area">
             <div class="row">
               <div class="col-xs-2"><i class="fa fa-search fa-lg" ></i></div>
                 <form method="GET" action="search.php">
-                  <input class="search-text col-xs-10" type="text" name="search" value="検索フィード" />
+                  <input class="search-text col-xs-10" type="text" name="search" placeholder="検索フィード" />
                 </form>
             </div>
           </div>
@@ -60,6 +71,16 @@
       </header>
     </div>
 
+    <div class="search-overlay"></div>
+    <div class="search-result-area">
+      <div class="row">
+        <div class="col-xs-12 search-result">
+          <table class="search-result">
+            <tr class="allSearchEntry"><td><i class="fa fa-file-text-o"></i>全文検索</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
 
     <div class="main-contents">  <!-- 記事部分 -->
       <h1>タイトル</h1>
@@ -137,7 +158,7 @@
 
 
 <!-- Include JQery -->
-<script src="./resource/jquery/jquery-3.1.1.slim.min.js"></script>
+<script src="./resource/jquery/jquery-3.1.1.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="./resource/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
@@ -151,7 +172,7 @@
 <script src="./resource/drawer/js/drawer.min.js"></script>
 <script>$(document).ready(function(){$('.drawer').drawer();});</script>
 
-<script src="./resource/view.js"></script>
-<link href="./resource/view.css" rel="stylesheet" />
+<script src="./resource/js/view.js"></script>
+<link href="./resource/css/view.css" rel="stylesheet" />
 </body>
 </html>
