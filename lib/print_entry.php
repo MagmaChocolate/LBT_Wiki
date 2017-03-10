@@ -18,7 +18,13 @@ function replace_entry($fetchData){
   $html_txt = $html_txt.'</div>';
   return $html_txt;
 };
+function makeLink($value){  // http://www.webcyou.com/?p=964
+return mb_ereg_replace("(https?|ftp)(://[[:alnum:]\+\$\;\?\.%,!#~*/:@&=_-]+)", '<a href="\\1\\2\">\\1\\2</a>' , $value);
+}
+// $fetchData["html"] = escape_and_linkify($fetchData["html"]);
+// $fetchData["html"] = url_henkan($fetchData["html"]);
 $fetchData["html"] = replace_entry($fetchData);
+$fetchData["html"] = makeLink($fetchData["html"]);
 ?>
 <div class="main-contents">  <!-- 記事部分 -->
   <h1><?php echo $fetchData["title"];?></h1>
