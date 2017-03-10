@@ -16,7 +16,7 @@ $host .= $_SERVER['HTTP_HOST'];
   <link rel="manifest" href="/manifest.json">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000">
   <meta name="theme-color" content="#ffffff">
-  
+
   <title><?php echo ($fetchData["title"].' | LBT_wiki'); ?></title>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,6 +27,7 @@ $host .= $_SERVER['HTTP_HOST'];
   <link href="<?php echo $host; ?>/resource/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="drawer drawer--left ">
+  <?php require(__DIR__."/google-analytics.php");?>
 <!-- サイドメニュー -->
 <nav class="side-menu-area drawer-nav">
   <ul class="list-area drawer-menu">

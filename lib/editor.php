@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="./resource/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
+  <?php require(__DIR__."/google-analytics.php");?>
   <script>
     var newFlag = <?php echo !isset($info)?"true":"false"?>;
   </script>

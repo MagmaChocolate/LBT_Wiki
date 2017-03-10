@@ -58,6 +58,7 @@ $host .= $_SERVER['HTTP_HOST'];
   </style>
 </head>
 <body class="drawer drawer--left ">
+  <?php require(__DIR__."/google-analytics.php");?>
 <!-- サイドメニュー -->
 <nav class="side-menu-area drawer-nav">
   <ul class="list-area drawer-menu">
