@@ -27,15 +27,17 @@ $host .= $_SERVER['HTTP_HOST'];
   <style>
   .slide-show-area{
     margin-top: 20px;
+    height: 200px;
   }
   .slide-show-area > div{
-    height: 200px;
+    height: 100%;
     border: solid 1px black;
   }
-
+  .slide-show-area > div > div{
+    height: 100%;
+  }
   .first{
     background: white;
-    padding-left: 10px;
   }
   .first > .text{
     float: left;
@@ -45,8 +47,13 @@ $host .= $_SERVER['HTTP_HOST'];
   div.first > img{
     width: 50%;
     max-height: 200px;
-    max-width: 200px;
     float: left;
+  }
+  div.second img{
+    max-height:200px;
+  }
+  div.second{
+    background-color: #40c842;
   }
   </style>
 </head>
@@ -86,7 +93,7 @@ $host .= $_SERVER['HTTP_HOST'];
 
     <div class="main-contents">  <!-- 記事部分 -->
       <div class="slide-show-area">
-        <div class="first">
+        <div class="first col-xs-12">
           <div class="text">
             <h2>LBT_wiki</h2>
             <p>
@@ -101,6 +108,22 @@ $host .= $_SERVER['HTTP_HOST'];
             <h3>Ver 0.1β</h3>
           </div>
         </div>
+        <div class="second col-xs-12">
+          <div>
+            <img src="<?php echo $host?>/resource/img/home1.png" />
+          </div>
+        </div>
+        <div class="third col-xs-12">
+          <div>
+            <h2>アップデートについて</h2>
+            <p>
+              随時アップデートを実施しています、詳細は記事にてまとめています。
+            </p>
+            <p>
+              機能要望など言ってくれれば実装します。
+            </p>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -109,7 +132,8 @@ $host .= $_SERVER['HTTP_HOST'];
         <p>LBT_wikiはLBT部員が知識やノウハウなど好きなことを今後のLBT部のために形に残る知識を共有するためのサービスです。</p>
         <p>検索するには上の検索バーで検索できます</p>
         <p>知識を書くには左上の「三」みたいなボタンを押してみてください</p>
-        <p><b>βテスト版で書いた知識は全て残るので、みなさん書いて！！</b></p>
+        <p><u>画像アップロード機能は今作ってます！もうちょい待って！！</u></p>
+        <p><b>βテスト版で書いた記事は全て残るので、みなさん書いて！！</b></p>
       </div>
     </div>
   </div> <!-- class="container" -->
@@ -153,7 +177,7 @@ $host .= $_SERVER['HTTP_HOST'];
 $(document).ready(function(){
   $('.slide-show-area').slick({
     autoplay: true,
-    autoplaySpead: 3000,
+    autoplaySpead: 5000,
   });
 });
 </script>
