@@ -53,10 +53,9 @@ function postData(){
     'author': $('div.author input').val(),
     'category': category
   };
-  if(typeof(page) !== 'undefined'){
-    sendText.page = page;
-  }else if (typeof(page) === 'number') {
-    sendText.page = location.href.replace(/.*page=([0-9]*)/,function(){return arguments[1]});
+  var pageNum = location.href.replace(/.*page=([0-9])/,function(){return arguments[1]})
+  if(pageNum != location.href){
+    sendText.page = pageNum;
   }
   console.log(sendText);
   // if(getPostParam('page') !== undefined){
