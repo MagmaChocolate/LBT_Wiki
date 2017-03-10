@@ -1,7 +1,17 @@
+<?php
+$host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
+$host .= $_SERVER['HTTP_HOST'];
+?>
 <!doctype html>
 <html>
 <head>
-  <title>LBT_Wiki</title>
+  <!-- TwitterCards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@LBT_LiSA" />
+  <meta name="twitter:title" content="<?php echo isset($info)?$info["title"]."を編集中":"新規記事の作成"?> | LBT_Wiki" />
+  <meta name="twitter:image" content="<?php echo $host?>/resource/img/twitter-cards.png" />
+
+  <title><?php echo isset($info)?$info["title"]."を編集中":"新規記事の作成"?> | LBT_Wiki</title>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
