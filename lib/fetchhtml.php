@@ -7,5 +7,5 @@ function returnJson($returnData){
 }
 
 $arr = read_db($_POST["page"]);
-$out = ["html" => $arr["html"]];
+$out = ["html" => $arr["html"],"category" => $arr["category"]];
 returnJson($out);

@@ -126,6 +126,11 @@ $(function(){
     })
     .done(function(data){  // 通信成功時に呼び出される部分
       CKEDITOR.instances.visualEditor.setData(data.html);
+      for(var i = $('select.first > option').length,j = 0;j<=i;j++){
+        if($('select.first > option').eq(j).val() == data.category[0]){
+          $('select.first > option').eq(j).prop('selected',true);
+        }
+      }
       console.log(data);
     });
   }

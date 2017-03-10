@@ -451,7 +451,7 @@ function read_db($page,$ver = null){
  *                     エラーはfalseを返す
  */
 function fetchInfo($page){
-  if(!thisPageExisting($title)){
+  if(!thisPageExisting($page)){
     // 新規記事はfalse
     return false;
   }else{
