@@ -112,9 +112,9 @@ function postData(){
  * 既存の記事の時に最新の記事を取得
  */
 $(function(){
-  if(typeof(page) !== 'undefined'){
+  if(location.href.indexOf('page')){
     var sendText = {
-      'page': page
+      'page': location.href.replace(/.*page=([0-9]*)/,function(){return arguments[1]})
     };
     console.log(sendText);
     $.ajax({
