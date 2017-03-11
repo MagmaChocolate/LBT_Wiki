@@ -5,6 +5,13 @@ $host .= $_SERVER['HTTP_HOST'];
 <!DOCTYPE HTML>
 <html>
 <head>
+  <!-- TwitterCards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@LBT_LiSA" />
+  <meta name="twitter:title" content="<?php echo ($fetchData["title"].' | LBT_wiki'); ?>" />
+  <meta name="twitter:description" content="LBT部員のための知識共有サービス" />
+  <meta name="twitter:image" content="<?php echo $host?>/resource/img/twitter-cards.png" />
+
   <!-- favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
@@ -58,6 +65,7 @@ $host .= $_SERVER['HTTP_HOST'];
   </style>
 </head>
 <body class="drawer drawer--left ">
+  <?php require(__DIR__."/google-analytics.php");?>
 <!-- サイドメニュー -->
 <nav class="side-menu-area drawer-nav">
   <ul class="list-area drawer-menu">

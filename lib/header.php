@@ -9,6 +9,13 @@ $host .= $_SERVER['HTTP_HOST'];
 <!DOCTYPE HTML>
 <html>
 <head>
+  <!-- TwitterCards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@LBT_LiSA" />
+  <meta name="twitter:title" content="<?php echo ($fetchData["title"].' | LBT_wiki'); ?>" />
+  <meta name="twitter:description" content="LBT部員のための知識共有サービス" />
+  <meta name="twitter:image" content="<?php echo $host?>/resource/img/twitter-cards.png" />
+
   <!-- favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
@@ -16,7 +23,7 @@ $host .= $_SERVER['HTTP_HOST'];
   <link rel="manifest" href="/manifest.json">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000">
   <meta name="theme-color" content="#ffffff">
-  
+
   <title><?php echo ($fetchData["title"].' | LBT_wiki'); ?></title>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,6 +34,7 @@ $host .= $_SERVER['HTTP_HOST'];
   <link href="<?php echo $host; ?>/resource/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="drawer drawer--left ">
+  <?php require(__DIR__."/google-analytics.php");?>
 <!-- サイドメニュー -->
 <nav class="side-menu-area drawer-nav">
   <ul class="list-area drawer-menu">
