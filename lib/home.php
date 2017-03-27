@@ -127,7 +127,7 @@ $host .= $_SERVER['HTTP_HOST'];
           </div>
           <img src="<?php echo $host;?>/resource/img/lbt-logo.png">
           <div class="ver">
-            <h3>Ver 0.1β</h3>
+            <h3>Ver 0.2β</h3>
           </div>
         </div>
         <div class="second col-xs-12">

@@ -108,6 +108,14 @@
  *                     エラーはfalseを返す
  */
 ```
+## fetchAllIndex()
+```
+/**
+ * 記事タイトルとのそページ番号を取得し連想はいれつで返す
+ * leration: search.php
+ * @return [type] [description]
+ */
+```
 ## write_db()
 ```
 /**
