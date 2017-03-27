@@ -53,10 +53,9 @@ function postData(){
     'author': $('div.author input').val(),
     'category': category
   };
-  if(typeof(page) !== 'undefined'){
-    sendText.page = page;
-  }else if (typeof(page) === 'number') {
-    sendText.page = location.href.replace(/.*page=([0-9]*)/,function(){return arguments[1]});
+  var pageNum = location.href.replace(/.*page=([0-9])/,function(){return arguments[1]})
+  if(pageNum != location.href){
+    sendText.page = pageNum;
   }
   console.log(sendText);
   // if(getPostParam('page') !== undefined){
@@ -112,9 +111,9 @@ function postData(){
  * 既存の記事の時に最新の記事を取得
  */
 $(function(){
-  if(typeof(page) !== 'undefined'){
+  if(location.href.indexOf('page')){
     var sendText = {
-      'page': page
+      'page': location.href.replace(/.*page=([0-9]*)/,function(){return arguments[1]})
     };
     console.log(sendText);
     $.ajax({
@@ -127,6 +126,11 @@ $(function(){
     })
     .done(function(data){  // 通信成功時に呼び出される部分
       CKEDITOR.instances.visualEditor.setData(data.html);
+      for(var i = $('select.first > option').length,j = 0;j<=i;j++){
+        if($('select.first > option').eq(j).val() == data.category[0]){
+          $('select.first > option').eq(j).prop('selected',true);
+        }
+      }
       console.log(data);
     });
   }

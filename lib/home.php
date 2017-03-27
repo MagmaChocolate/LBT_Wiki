@@ -5,6 +5,13 @@ $host .= $_SERVER['HTTP_HOST'];
 <!DOCTYPE HTML>
 <html>
 <head>
+  <!-- TwitterCards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@LBT_LiSA" />
+  <meta name="twitter:title" content="<?php echo ($fetchData["title"].' | LBT_wiki'); ?>" />
+  <meta name="twitter:description" content="LBT部員のための知識共有サービス" />
+  <meta name="twitter:image" content="<?php echo $host?>/resource/img/twitter-cards.png" />
+
   <!-- favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
@@ -58,6 +65,7 @@ $host .= $_SERVER['HTTP_HOST'];
   </style>
 </head>
 <body class="drawer drawer--left ">
+  <?php require(__DIR__."/google-analytics.php");?>
 <!-- サイドメニュー -->
 <nav class="side-menu-area drawer-nav">
   <ul class="list-area drawer-menu">
@@ -76,6 +84,9 @@ $host .= $_SERVER['HTTP_HOST'];
   <div class="container">
     <div class="row"> <!-- ヘッダー部分 -->
       <header class="col-xs-12">
+        <div class="row times">
+          <div class="col-xs-2 icon-button"><i class="fa fa-3x fa-times"></i></div>
+        </div>
         <div class="row">
           <div class="col-xs-2"><i class="fa fa-bars fa-2x drawer-toggle"></i></div>
           <div class="col-xs-9 search-area">
@@ -88,6 +99,17 @@ $host .= $_SERVER['HTTP_HOST'];
           </div>
         </div>
       </header>
+    </div>
+
+    <div class="search-overlay"></div>
+    <div class="search-result-area">
+      <div class="row">
+        <div class="col-xs-12 search-result">
+          <table class="search-result">
+            <tr class="allSearchEntry"><td><i class="fa fa-file-text-o"></i>全文検索</td></tr>
+          </table>
+        </div>
+      </div>
     </div>
 
 
@@ -184,5 +206,13 @@ $(document).ready(function(){
 
 <script src="./resource/js/view.js"></script>
 <link href="./resource/css/view.css" rel="stylesheet" />
+<style>
+div.search-overlay{
+  z-index: 1;
+}
+div.search-result-area{
+  z-index: 1;
+}
+</style>
 </body>
 </html>

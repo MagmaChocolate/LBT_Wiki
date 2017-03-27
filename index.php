@@ -19,7 +19,7 @@ function init(){
         require(__DIR__."/lib/database.php");
         $info = fetchInfo($_GET["page"]);
         if($info === false){
-          require("./lib/notfound.php");
+          require(__DIR__."/lib/notfound.php");
           return true;
         }
         require(__DIR__."/lib/editor.php");
