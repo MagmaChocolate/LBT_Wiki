@@ -208,3 +208,13 @@ $(function(){
     $('div.before').css('display','block');
   });
 });
+
+/**
+ * ブラウザバック
+ */
+$(function(){
+  $('.fa-arrow-left').on('click',function(){
+    window.history.back(-1);
+    return false;
+  });
+});
