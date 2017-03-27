@@ -19,7 +19,7 @@ function replace_entry($fetchData){
   return $html_txt;
 };
 function makeLink($value){  // http://www.webcyou.com/?p=964
-return mb_ereg_replace("(https?|ftp)(://[[:alnum:]\+\$\;\?\.%,!#~*/:@&=_-]+)", '<a href="\\1\\2\">\\1\\2</a>' , $value);
+return mb_ereg_replace("(http|https|ftp)(://[[:alnum:]\+\$\;\?\.%,!#~*/:@&=_-]+)", '<a href="\\1\\2\">\\1\\2</a>' , $value);
 }
 // $fetchData["html"] = escape_and_linkify($fetchData["html"]);
 // $fetchData["html"] = url_henkan($fetchData["html"]);
