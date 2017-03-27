@@ -111,28 +111,12 @@ function postData(){
  * 既存の記事の時に最新の記事を取得
  */
 $(function(){
-  if(location.href.indexOf('page')){
-    var sendText = {
-      'page': location.href.replace(/.*page=([0-9]*)/,function(){return arguments[1]})
-    };
-    console.log(sendText);
-    $.ajax({
-      type: 'POST',
-      url: './lib/fetchhtml.php',
-      data: sendText,
-      dataType: 'json',  //レスポンスとして受け取ったデータタイプの指定レスポンスは変数dataに格納される
-      cache: false,
-      timeout: 1000,
-    })
-    .done(function(data){  // 通信成功時に呼び出される部分
-      CKEDITOR.instances.visualEditor.setData(data.html);
-      for(var i = $('select.first > option').length,j = 0;j<=i;j++){
-        if($('select.first > option').eq(j).val() == data.category[0]){
-          $('select.first > option').eq(j).prop('selected',true);
-        }
-      }
-      console.log(data);
-    });
+  CKEDITOR.instances.visualEditor.setData($('#pre-text').attr('phtml'));
+  var category = JSON.parse($('#pre-text').attr('pcategory'));
+  for(var i = $('select.first > option').length,j = 0;j<=i;j++){
+    if($('select.first > option').eq(j).val() == category[0]){
+      $('select.first > option').eq(j).prop('selected',true);
+    }
   }
 });
 

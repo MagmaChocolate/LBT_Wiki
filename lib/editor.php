@@ -93,6 +93,16 @@ $host .= $_SERVER['HTTP_HOST'];
   <div class="main-contents">
     <div class="editor-rapper">
       <textarea name="visual-editor" id="visualEditor"></textarea>
+      <?php
+        $page = $_GET["page"];
+        if( isset($_GET["ver"]) ){
+          $ver = $_GET["ver"];
+          $html = read_db($page,$ver);
+        }else{
+          $html = read_db($page);
+        }
+       ?>
+      <div id="pre-text" style="display:none" phtml="<?php echo $html['html'] ?>" pcategory=<?php echo json_encode($html['category'],JSON_UNESCAPED_UNICODE)?>></div>
     </div>
   </div>
 
