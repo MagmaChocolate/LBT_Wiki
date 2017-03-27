@@ -111,10 +111,11 @@ function postData(){
  * 既存の記事の時に最新の記事を取得
  */
 $(function(){
-  CKEDITOR.instances.visualEditor.setData($('#pre-text').attr('phtml'));
-  var category = JSON.parse($('#pre-text').attr('pcategory'));
+  html = $('#pre-text').attr('phtml');
+  CKEDITOR.instances.visualEditor.setData(html);
+  var category = $('#pre-text').attr('pcategory');
   for(var i = $('select.first > option').length,j = 0;j<=i;j++){
-    if($('select.first > option').eq(j).val() == category[0]){
+    if($('select.first > option').eq(j).val() == category){
       $('select.first > option').eq(j).prop('selected',true);
     }
   }
