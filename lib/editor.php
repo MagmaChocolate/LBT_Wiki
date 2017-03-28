@@ -94,6 +94,7 @@ $host .= $_SERVER['HTTP_HOST'];
     <div class="editor-rapper">
       <textarea name="visual-editor" id="visualEditor"></textarea>
       <?php
+  if(isset($_GET["page"])){
         $page = $_GET["page"];
         if( isset($_GET["ver"]) ){
           $ver = $_GET["ver"];
@@ -104,8 +105,9 @@ $host .= $_SERVER['HTTP_HOST'];
         $html = [];
         $html = htmlspecialchars($data['html']);
         // $html = json_encode($html,JSON_UNESCAPED_UNICODE);
+  }
        ?>
-      <div id="pre-text" style="display:none" phtml="<?php echo $html ?>" pcategory="<?php echo $data['category'][0]?>"></div>
+      <div id="pre-text" style="display:none" phtml="<?php echo isset($html)?$html:""; ?>" pcategory="<?php echo isset($data['category'][0])?$data['category'][0]:"";?>"</div>
     </div>
   </div>
 
