@@ -44,7 +44,6 @@ $fetchData["html"] = makeLink($fetchData["html"]);
   if($fetchData["eyecatch"] === "none"){
     $fetchData["eyecatch"] = "/resource/img/eyecatch-none.png";
   }
-  putLog($fetchData["eyecatch"]);
 ?>
 <div class="eyecatch" style="background-image:url('<?php echo $host.$fetchData["eyecatch"]; ?>')"></div>
 <!-- <div class="description">
