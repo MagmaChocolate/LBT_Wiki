@@ -155,7 +155,8 @@ div.loading-animation > span.text{
 header{
   height: 54px;
   background-color: white;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.1)
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+  position: fixed;
 }
 header > div.icon{
   width: 54px;
@@ -207,4 +208,9 @@ header > div.save{
 
 .show-before-config{
   display: none;
+}
+
+div.editor-rapper{
+  position: fixed;
+  margin-top: 55px;
 }
