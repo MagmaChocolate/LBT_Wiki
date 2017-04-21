@@ -183,6 +183,9 @@ $(function(){
     $('.before,.eidtor-overlay').css('display','none');
   });
 });
+$('.submit-button').on('click',function(){
+  $('#editorframe').focus();
+});
 
 /**
  * 編集の概要の入力フォームの表示
@@ -218,4 +221,121 @@ $(function(){
     window.history.back(-1);
     return false;
   });
+});
+
+
+
+
+$(function(){
+  $('#entry-info-ber').css('display','none');
+});
+
+
+$('#undo').on('click',function(){
+  editor.execCommand('undo',false,null);
+});
+$('#redo').on('click',function(){
+  editor.execCommand('redo',false,null);
+});
+
+$('#insert_image').on('click',function(){
+  /**
+   * 画像追加の処理
+   */
+
+});
+
+$('.text_style_show').on('click',function(){
+  if(this.flag === false || this.flag === undefined){
+    this.flag = true;
+    $('.text_style_show').css('background','rgb(237, 237, 237)');
+  }else{
+    this.flag = false;
+    $('.text_style_show').css('background','white');
+    $('#indent_popup').css('display','none');
+  }
+  $('.font-style').toggle();
+});
+function text_bold(){
+  editor.execCommand("bold",false,null);
+  $('#editorframe').focus();
+  if(this.flag === undefined || this.flag === false){
+    this.flag = true; // 有効
+    $('#tr_bold').css('background','rgb(237, 237, 237)');
+  }else{
+    this.flag = false; // 無効
+    $('#tr_bold').css('background','white');
+  }
+  $('.font-style').toggle();
+}
+function text_underline(){
+  editor.execCommand('underline',false,null);
+  $('#editorframe').focus();
+  if(this.flag === undefined || this.flag === false){
+    this.flag = true; // 有効
+    $('#tr_underline').css('background','rgb(237, 237, 237)');
+  }else{
+    this.flag = false; // 無効
+    $('#tr_underline').css('background','white');
+  }
+  $('.font-style').toggle();
+}
+function text_cancel(){
+  editor.execCommand('strikethrough',false,null);
+  $('#editorframe').focus();
+  if(this.flag === undefined || this.flag === false){
+    this.flag = true; // 有効
+    $('#tr_cancel').css('background','rgb(237, 237, 237)');
+  }else{
+    this.flag = false; // 無効
+    $('#tr_cancel').css('background','white');
+  }
+  $('.font-style').toggle();
+}
+function text_list(){
+  editor.execCommand('insertunorderedlist',false,null);
+  $('#editorframe').focus();
+  if(this.flag === undefined || this.flag === false){
+    this.flag = true; // 有効
+    $('#tr_list').css('background','rgb(237, 237, 237)');
+  }else{
+    this.flag = false; // 無効
+    $('#tr_list').css('background','white');
+  }
+  $('.font-style').toggle();
+}
+function format_headline(){
+  editor.execCommand('formatblock',false,'<h2>');
+  $('#editorframe').focus();
+  $('.font-style').toggle();
+}
+function text_indent_show(){
+  $('#tr_indent').css('background','rgb(237, 237, 237)');
+  $('#editorframe').focus();
+  $('#indent_popup').toggle();
+}
+function text_indent(mode){
+  if(mode === 'down'){
+    editor.execCommand('indent',false,null);
+  }else if(mode === 'up'){
+    editor.execCommand('outdent',false,null);
+  }
+  $('#tr_indent').css('background','white');
+  $('#editorframe').focus();
+  $('#indent_popup').toggle();
+  $('.font-style').toggle();
+}
+
+/**
+ * iframe height change
+ */
+$('#minus').on('click',function(){
+  var height = $('#editorframe').height() / 30 - 1;
+  $('#editor-height').html(height);
+  $('#editorframe').css('height',height * 30);
+});
+$('#plus').on('click',function(){
+  var height = $('#editorframe').height() / 30 + 1;
+  $('#editor-height').html(height);
+  $('#editorframe').css('height',height * 30);
 });
