@@ -1,0 +1,19 @@
+body{
+  position: absolute;
+  width: 100%;
+}
+img{
+  max-width: 80%;
+  margin: auto;
+  max-height: 200px;
+}
+h2{
+  border-bottom: solid 1px #eaecf0;
+  font-size: 2em;
+  font-family:"Roboto Slab" , Garamond , "Times New Roman" , "游明朝" , "Yu Mincho" , "游明朝体" , "YuMincho" , "ヒラギノ明朝 Pro W3" , "Hiragino Mincho Pro" , "HiraMinProN-W3" , "HGS明朝E" , "ＭＳ Ｐ明朝" , "MS PMincho" , serif;
+      /*http://sole-color-blog.com/blog/design/246/*/
+}
+h2::before{
+  content: '▽';
+  font-size: 0.5em;
+}
