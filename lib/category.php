@@ -79,8 +79,8 @@ div.contents-count{
         </div>
       </div>
       <div class="links">
-        <a href="hoge">ヘルプ</a>
-        <a href="hoge">コンタクト</a>
+        <a href="<?=$host?>/help/">ヘルプ</a>
+        <a href="https://twitter.com/LiSA_sue0527">コンタクト</a>
       </div>
     </footer>
   <!-- </div> -->
