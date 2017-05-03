@@ -194,7 +194,14 @@ if(isset($_GET["page"])){
 }
    ?>
   <div class="main-contents">
-    <iframe id="editorframe" frameborder="0"></iframe>
+    <?php
+      if(isset($_GET['page'])){
+        // 既存記事
+        echo '<iframe id="editorframe" frameborder="0" src="'.$host.'/lib/editor-iframe.php?page='.$_GET['page'].'"></iframe>';
+      }else{
+        echo '<iframe id="editorframe" frameborder="0"></iframe>';
+      }
+    ?>
     <div class="setting" id="editor-setting">
       <div>
         エディタ領域のサイズ調整
@@ -228,8 +235,10 @@ if(isset($_GET["page"])){
   <link href="<?=$host?>/resource/css/editor.css" rel="stylesheet" />
   <!-- Setup designMode -->
   <script>
+  $(function(){
     editor = document.getElementsByTagName("iframe")[0].contentDocument;
     editor.designMode = "On";
+  });
   </script>
 </body>
 </html>
