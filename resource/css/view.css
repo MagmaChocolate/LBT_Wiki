@@ -230,8 +230,8 @@ div.main-text-area > div.main-text > p{  /* 段落 */
   margin-bottom: 16px;
   line-height: 1.5em;
 }
-div.main-text img{
-  width: 80%;
+div.main-text-area img{
+  max-width: 80%;
   margin: auto;
 }
 

@@ -29,7 +29,8 @@ function initSection(){
  * 本文の画像をセンタリングするbootstrapのclass名を付加する
  */
 function initImgCenter(){
-  $('div.main-text img').addClass('center-block');
+  $('div.main-text-area img').addClass('center-block');
+  $('div.main-text-area img').css('max-width','80%');
 }
 initImgCenter();
 initSection();

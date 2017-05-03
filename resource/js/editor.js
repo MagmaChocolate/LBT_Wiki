@@ -231,6 +231,11 @@ $('#insert_image').on('click',function(){
   $('input#file').click();
 });
 
+/**
+ * 画像を投稿するロジック
+ * フォームにファイルが定まったら発火
+ * @return {json} 画像のURLが帰ってくる
+ */
 $(function() {
   $('#foo').on('change', function() {
     let getParam = purseQuery();
@@ -285,7 +290,10 @@ function purseQuery() {
   return result;
 }
 
-
+/**
+ * 書式設定のメニューを表示するロジック
+ * @return {[type]} [description]
+ */
 $('.text_style_show').on('click',function(){
   if(this.flag === false || this.flag === undefined){
     this.flag = true;
@@ -297,6 +305,9 @@ $('.text_style_show').on('click',function(){
   }
   $('.font-style').toggle();
 });
+/**
+ * ふとじ
+ */
 function text_bold(){
   editor.execCommand("bold",false,null);
   $('#editorframe').focus();
@@ -309,6 +320,9 @@ function text_bold(){
   }
   $('.font-style').toggle();
 }
+/**
+ * アンダーライン
+ */
 function text_underline(){
   editor.execCommand('underline',false,null);
   $('#editorframe').focus();
@@ -321,6 +335,9 @@ function text_underline(){
   }
   $('.font-style').toggle();
 }
+/**
+ * 取り消し文字
+ */
 function text_cancel(){
   editor.execCommand('strikethrough',false,null);
   $('#editorframe').focus();
@@ -333,6 +350,9 @@ function text_cancel(){
   }
   $('.font-style').toggle();
 }
+/**
+ * 箇条書き（点）
+ */
 function text_list(){
   editor.execCommand('insertunorderedlist',false,null);
   $('#editorframe').focus();
@@ -345,16 +365,26 @@ function text_list(){
   }
   $('.font-style').toggle();
 }
+/**
+ * セクション区切りの小見出し
+ */
 function format_headline(){
   editor.execCommand('formatblock',false,'<h2>');
   $('#editorframe').focus();
   $('.font-style').toggle();
 }
+/**
+ * インデントを調整するメニューを表示させる
+ */
 function text_indent_show(){
   $('#tr_indent').css('background','rgb(237, 237, 237)');
   $('#editorframe').focus();
   $('#indent_popup').toggle();
 }
+/**
+ * インデントを変化させる
+ * @param  {text} mode インデントを下げる(indent)、上げる(outdent)
+ */
 function text_indent(mode){
   if(mode === 'down'){
     editor.execCommand('indent',false,null);
