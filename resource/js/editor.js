@@ -143,12 +143,12 @@ function showLoading(mode,text){
   }
 }
 
-$(function(){
-  if($('#pre-text').attr('phtml') != ''){
-    var pretxt = $('#pre-text').attr('phtml');
-    editor.execCommand('inserthtml',false,pretxt);
-  }
-});
+// $(function(){
+//   if($('#pre-text').attr('phtml') != ''){
+//     var pretxt = $('#pre-text').attr('phtml');
+//     editor.execCommand('inserthtml',false,pretxt);
+//   }
+// });
 
 /**
  * イベントの設置
@@ -173,6 +173,8 @@ $(function(){
   });
 });
 $('.submit-button').on('click',function(){
+  editor = document.getElementsByTagName("iframe")[0].contentDocument;
+  editor.designMode = "On";
   $('#editorframe').focus();
 });
 
@@ -412,9 +414,12 @@ $('#plus').on('click',function(){
 });
 
 
-/**
- * iframe CSS
- */
-$(function(){
-  $('iframe').contents().find('head').append('<link href="./resource/css/editor-iframe.css" rel="stylesheet" type="text/css" media="all" />');
-});
+// /**
+//  * iframe CSS
+//  */
+// $(function(){
+//   let url = purseQuery();
+//   if(url == undefined){
+//     $('iframe').contents().find('head').append('<link href="./resource/css/editor-iframe.css" rel="stylesheet" type="text/css" media="all" />');
+//   }
+// });

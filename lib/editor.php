@@ -194,14 +194,7 @@ if(isset($_GET["page"])){
 }
    ?>
   <div class="main-contents">
-    <?php
-      if(isset($_GET['page'])){
-        // 既存記事
-        echo '<iframe id="editorframe" frameborder="0" src="'.$host.'/lib/editor-iframe.php?page='.$_GET['page'].'"></iframe>';
-      }else{
-        echo '<iframe id="editorframe" frameborder="0"></iframe>';
-      }
-    ?>
+    <iframe id="editorframe" frameborder="0" src="<?=$host?>/lib/editor-iframe.php<?php echo isset($_GET['page'])?'?page='.$_GET['page']:''?><?php echo isset($_GET['var'])?'&var='.$_GET['var']:''?>"></iframe>
     <div class="setting" id="editor-setting">
       <div>
         エディタ領域のサイズ調整
@@ -227,18 +220,17 @@ if(isset($_GET["page"])){
       <div id="pre-text" style="display:none" phtml="<?php echo isset($html)?$html:""; ?>" pcategory="<?php echo isset($data['category'][0])?$data['category'][0]:"";?>"</div>
     </div>
   </div>
+  <div class="dummy"></div>
 
 
   <!-- Include JQery -->
   <script src="<?=$host?>/resource/jquery/jquery-3.1.1.min.js"></script>
-  <script src="<?=$host?>/resource/js/editor.js"></script>
-  <link href="<?=$host?>/resource/css/editor.css" rel="stylesheet" />
   <!-- Setup designMode -->
   <script>
-  $(function(){
     editor = document.getElementsByTagName("iframe")[0].contentDocument;
-    editor.designMode = "On";
-  });
+    // editor.designMode = "On";
   </script>
+  <script src="<?=$host?>/resource/js/editor.js"></script>
+  <link href="<?=$host?>/resource/css/editor.css" rel="stylesheet" />
 </body>
 </html>

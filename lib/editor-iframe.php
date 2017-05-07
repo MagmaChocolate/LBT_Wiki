@@ -17,14 +17,20 @@ require(__DIR__.'/database.php');
   </head>
   <body>
     <?php
-    if(isset($_GET['var'])){
-      $data = read_db($_GET['page'],$_GET['var']);
-    }else{
-      $data = read_db($_GET['page']);
-    }
-    if($data !== false){
-      echo $data['html'];
+    if(isset($_GET['page'])){
+      if(isset($_GET['var'])){
+        $data = read_db($_GET['page'],$_GET['var']);
+      }else{
+        $data = read_db($_GET['page']);
+      }
+      if($data !== false){
+        echo $data['html'];
+      }
     }
     ?>
+    <!-- Include JQery -->
+    <script src="<?=$host?>/resource/jquery/jquery-3.1.1.min.js"></script>
+    <script>
+$(function(){$('div[style]:not([class]):not([id])').css('display','none');});</script>
   </body>
 </html>
