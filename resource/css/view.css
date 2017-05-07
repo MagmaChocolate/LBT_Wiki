@@ -223,7 +223,8 @@ div.main-text-area h2 i.fa-angle-up{
   margin-right: 5px;
 }
 div.main-text-area > div{  /* 文章 */
-  display: none;
+/*エディタと相性が悪いので一時的に無効化*/
+  /*display: none;*/
 }
 div.main-text-area > div.main-text > p{  /* 段落 */
   margin-top: 8px;
