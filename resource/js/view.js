@@ -7,8 +7,9 @@
 
 /**
  * 本文、セクション区切り<h2>をアコーディオン化するスクリプト
+ * エディタと相性が悪いので一時的に無効化
 */
-function initSection(){
+/*function initSection(){
   // 折りたたみの実装
 
   $('div.main-text-area > h2').on('click',function (e){
@@ -24,12 +25,13 @@ function initSection(){
     $(this).next('div').toggle();
   });
 }
-
+*/
 /**
  * 本文の画像をセンタリングするbootstrapのclass名を付加する
  */
 function initImgCenter(){
-  $('div.main-text img').addClass('center-block');
+  $('div.main-text-area img').addClass('center-block');
+  $('div.main-text-area img').css('max-width','80%');
 }
 initImgCenter();
 initSection();

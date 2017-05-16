@@ -223,15 +223,16 @@ div.main-text-area h2 i.fa-angle-up{
   margin-right: 5px;
 }
 div.main-text-area > div{  /* 文章 */
-  display: none;
+/*エディタと相性が悪いので一時的に無効化*/
+  /*display: none;*/
 }
 div.main-text-area > div.main-text > p{  /* 段落 */
   margin-top: 8px;
   margin-bottom: 16px;
   line-height: 1.5em;
 }
-div.main-text img{
-  width: 80%;
+div.main-text-area img{
+  max-width: 80%;
   margin: auto;
 }
 
