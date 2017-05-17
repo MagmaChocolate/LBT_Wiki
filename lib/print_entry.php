@@ -27,14 +27,14 @@ function makeLink($value){  // http://www.webcyou.com/?p=964
   //画像タグ置換よけ
   $value = mb_ereg_replace('(<img src=")(http|https|ftp)://([[a-zA-Z0-9]\+\$\;\?\.%,!#~*/:@&=_-]+)">','[image](\\3)',$value);
   //URLアンカー化
-  $value = mb_ereg_replace("(http|https|ftp)(://[[a-zA-Z0-9]\+\$\;\?\.%,!#~*/:@&=_-]+)", '<a href="\\1\\2\">\\1\\2</a>' , $value);
+  $value = mb_ereg_replace("(http|https|ftp)(://[[a-zA-Z0-9]\+\$\;\?\.%,!#~*/:@&=_-]+)", '<a href="\\1\\2">\\1\\2</a>' , $value);
   // 画像タグ置換よけ、戻し
   $value = mb_ereg_replace('\[image\]\(([[a-zA-Z0-9]\+\$\;\?\.%,!#~*/:@&=_-]+)\)','<img src="http://\\1" />',$value);
 return $value;
 }
 // $fetchData["html"] = escape_and_linkify($fetchData["html"]);
 // $fetchData["html"] = url_henkan($fetchData["html"]);
-$fetchData["html"] = replace_entry($fetchData);
+ // $fetchData["html"] = replace_entry($fetchData);
 $fetchData["html"] = makeLink($fetchData["html"]);
 ?>
 <div class="main-contents">  <!-- 記事部分 -->
