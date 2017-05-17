@@ -38,6 +38,7 @@ function sendContents(){
   }
 
   $saveData = $_POST;
+  $saveData['html'] = preg_replace("/<script>.*<\/script>/i","",$saveData['html']);
   $return = write_db($saveData);
   if($return !== false){
     // 保存成功

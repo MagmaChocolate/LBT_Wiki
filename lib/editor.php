@@ -220,7 +220,6 @@ if(isset($_GET["page"])){
       <div id="pre-text" style="display:none" phtml="<?php echo isset($html)?$html:""; ?>" pcategory="<?php echo isset($data['category'][0])?$data['category'][0]:"";?>"</div>
     </div>
   </div>
-  <div class="dummy"></div>
 
 
   <!-- Include JQery -->

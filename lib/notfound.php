@@ -28,7 +28,7 @@ require("header.php");
         <li>管理人のミス</li>
       </ul>
       などが考えられます。なのでまずは<b>画面上方の検索を使ってみることをオススメします。</b><br />
-      それでも解決しない場合は<a href="<?php echo $host;?>/contact/index.html">ここから</a>管理している人に連絡すればどうにかしてくれるかも。
+      それでも解決しない場合は<a href="https://twitter.com/LiSA_sue0527">ここから</a>管理している人に連絡すればどうにかしてくれるかも。
     </div>
   </div> <!-- class="container" -->
 
