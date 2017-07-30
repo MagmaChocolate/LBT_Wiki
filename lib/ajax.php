@@ -1,4 +1,7 @@
 <?php
+global $host;
+$host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
+$host .= $_SERVER['HTTP_HOST'];
 require(__DIR__.'/database.php');
 
 /**
@@ -14,7 +17,7 @@ require(__DIR__.'/database.php');
  * @return json jQueryへjsonを返す
  */
 function sendContents(){
-
+global $host;
 
   /**
    * JSにjsonで結果を返却する関数
@@ -43,6 +46,8 @@ function sendContents(){
   if($return !== false){
     // 保存成功
     $returnData = ["message" => "success","page" => $return];
+    $text_slack = 'entry added.  <'.$host.'/index.php?cmd=view&page='.$return.'|「'.$_POST["title"].'」>';
+    sendSlack($text_slack);
   }else{
     // 保存失敗
     $returnData = ["message" => "ERR_save_database()"];
