@@ -62,6 +62,9 @@ $host .= $_SERVER['HTTP_HOST'];
   div.second{
     background-color: #40c842;
   }
+  footer{
+    height:200px;
+  }
   </style>
 </head>
 <body class="drawer drawer--left ">
