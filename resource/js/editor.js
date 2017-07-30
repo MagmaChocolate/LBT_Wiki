@@ -48,7 +48,7 @@ function postData(){
   console.log(category);
   var sendText = {
     'title': sessionStorage.getItem('title'),
-    'html': CKEDITOR.instances.visualEditor.getData(),
+    'html': $('#editorframe').contents().find('body').html(),
     'description': $('textarea#description').val(),
     'author': $('div.author input').val(),
     'category': category
@@ -107,19 +107,8 @@ function postData(){
     showLoading('err','もう一度送信してください');
   });
 }
-/**
- * 既存の記事の時に最新の記事を取得
- */
-$(function(){
-  html = $('#pre-text').attr('phtml');
-  CKEDITOR.instances.visualEditor.setData(html);
-  var category = $('#pre-text').attr('pcategory');
-  for(var i = $('select.first > option').length,j = 0;j<=i;j++){
-    if($('select.first > option').eq(j).val() == category){
-      $('select.first > option').eq(j).prop('selected',true);
-    }
-  }
-});
+
+
 
 
 /**
@@ -154,10 +143,10 @@ function showLoading(mode,text){
   }
 }
 
-// $(function (){
-//   if(newFlag===false){
-//     // 既存の編集
-//     $('div.entry-config,div.eidtor-overlay').css('display','none');
+// $(function(){
+//   if($('#pre-text').attr('phtml') != ''){
+//     var pretxt = $('#pre-text').attr('phtml');
+//     editor.execCommand('inserthtml',false,pretxt);
 //   }
 // });
 
@@ -182,6 +171,11 @@ $(function(){
     $('.entry-config').css('display','none');
     $('.before,.eidtor-overlay').css('display','none');
   });
+});
+$('.submit-button').on('click',function(){
+  editor = document.getElementsByTagName("iframe")[0].contentDocument;
+  editor.designMode = "On";
+  $('#editorframe').focus();
 });
 
 /**
@@ -219,3 +213,213 @@ $(function(){
     return false;
   });
 });
+
+
+
+
+$(function(){
+  $('#entry-info-ber').css('display','none');
+});
+
+
+$('#undo').on('click',function(){
+  editor.execCommand('undo',false,null);
+});
+$('#redo').on('click',function(){
+  editor.execCommand('redo',false,null);
+});
+
+$('#insert_image').on('click',function(){
+  $('input#file').click();
+});
+
+/**
+ * 画像を投稿するロジック
+ * フォームにファイルが定まったら発火
+ * @return {json} 画像のURLが帰ってくる
+ */
+$(function() {
+  $('#foo').on('change', function() {
+    let getParam = purseQuery();
+    const fd = new FormData($('#foo').get(0));
+    if (getParam.page !== undefined) {
+      var getURL = "./lib/imgupload.php?page=" + getParam.page * 1;
+    } else {
+      var getURL = "./lib/imgupload.php";
+    }
+    $.ajax({
+        // url: "./lib/imgupload.php",
+        url: getURL,
+        type: "POST",
+        data: fd,
+        processData: false,
+        contentType: false,
+        dataType: 'json'
+      })
+      .done(function(data) {
+        console.log(data);
+        if(data.code === 1){
+          editor.execCommand('insertimage',false,data.url);
+          $('#editorframe').focus();
+        }
+      }).fail(function(data){
+        console.log('Faild:'+data);
+      });
+    return false;
+  });
+});
+
+//http://qiita.com/thelarch/items/5e2a82a77c796788e848?utm_source=Qiita%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9&utm_campaign=565bb223ff-Qiita_newsletter_255_12_04_2017&utm_medium=email&utm_term=0_e44feaa081-565bb223ff-33170173#get%E5%80%A4%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B
+/**
+ * URLをパースしてGET値のオブジェクトにする
+ * @returns {{}} GET値のオブジェクトです。
+ */
+function purseQuery() {
+  const result = {};
+  const query = decodeURIComponent(location.search);
+  const query_ary = query.substring(1).split("&");
+  for (let item of query_ary) {
+    let match_index = item.search(/=/);
+    let key = "";
+    if (match_index !== -1) {
+      key = item.slice(0, match_index);
+    }
+    let value = item.slice(item.indexOf("=", 0) + 1);
+    if (key !== "") {
+      result[key] = value;
+    }
+  }
+  return result;
+}
+
+/**
+ * 書式設定のメニューを表示するロジック
+ * @return {[type]} [description]
+ */
+$('.text_style_show').on('click',function(){
+  if(this.flag === false || this.flag === undefined){
+    this.flag = true;
+    $('.text_style_show').css('background','rgb(237, 237, 237)');
+  }else{
+    this.flag = false;
+    $('.text_style_show').css('background','white');
+    $('#indent_popup').css('display','none');
+  }
+  $('.font-style').toggle();
+});
+/**
+ * ふとじ
+ */
+function text_bold(){
+  editor.execCommand("bold",false,null);
+  $('#editorframe').focus();
+  if(this.flag === undefined || this.flag === false){
+    this.flag = true; // 有効
+    $('#tr_bold').css('background','rgb(237, 237, 237)');
+  }else{
+    this.flag = false; // 無効
+    $('#tr_bold').css('background','white');
+  }
+  $('.font-style').toggle();
+}
+/**
+ * アンダーライン
+ */
+function text_underline(){
+  editor.execCommand('underline',false,null);
+  $('#editorframe').focus();
+  if(this.flag === undefined || this.flag === false){
+    this.flag = true; // 有効
+    $('#tr_underline').css('background','rgb(237, 237, 237)');
+  }else{
+    this.flag = false; // 無効
+    $('#tr_underline').css('background','white');
+  }
+  $('.font-style').toggle();
+}
+/**
+ * 取り消し文字
+ */
+function text_cancel(){
+  editor.execCommand('strikethrough',false,null);
+  $('#editorframe').focus();
+  if(this.flag === undefined || this.flag === false){
+    this.flag = true; // 有効
+    $('#tr_cancel').css('background','rgb(237, 237, 237)');
+  }else{
+    this.flag = false; // 無効
+    $('#tr_cancel').css('background','white');
+  }
+  $('.font-style').toggle();
+}
+/**
+ * 箇条書き（点）
+ */
+function text_list(){
+  editor.execCommand('insertunorderedlist',false,null);
+  $('#editorframe').focus();
+  if(this.flag === undefined || this.flag === false){
+    this.flag = true; // 有効
+    $('#tr_list').css('background','rgb(237, 237, 237)');
+  }else{
+    this.flag = false; // 無効
+    $('#tr_list').css('background','white');
+  }
+  $('.font-style').toggle();
+}
+/**
+ * セクション区切りの小見出し
+ */
+function format_headline(){
+  editor.execCommand('formatblock',false,'<h2>');
+  $('#editorframe').focus();
+  $('.font-style').toggle();
+}
+/**
+ * インデントを調整するメニューを表示させる
+ */
+function text_indent_show(){
+  $('#tr_indent').css('background','rgb(237, 237, 237)');
+  $('#editorframe').focus();
+  $('#indent_popup').toggle();
+}
+/**
+ * インデントを変化させる
+ * @param  {text} mode インデントを下げる(indent)、上げる(outdent)
+ */
+function text_indent(mode){
+  if(mode === 'down'){
+    editor.execCommand('indent',false,null);
+  }else if(mode === 'up'){
+    editor.execCommand('outdent',false,null);
+  }
+  $('#tr_indent').css('background','white');
+  $('#editorframe').focus();
+  $('#indent_popup').toggle();
+  $('.font-style').toggle();
+}
+
+/**
+ * iframe height change
+ */
+$('#minus').on('click',function(){
+  var height = $('#editorframe').height() / 30 - 1;
+  $('#editor-height').html(height);
+  $('#editorframe').css('height',height * 30);
+});
+$('#plus').on('click',function(){
+  var height = $('#editorframe').height() / 30 + 1;
+  $('#editor-height').html(height);
+  $('#editorframe').css('height',height * 30);
+});
+
+
+// /**
+//  * iframe CSS
+//  */
+// $(function(){
+//   let url = purseQuery();
+//   if(url == undefined){
+//     $('iframe').contents().find('head').append('<link href="./resource/css/editor-iframe.css" rel="stylesheet" type="text/css" media="all" />');
+//   }
+// });

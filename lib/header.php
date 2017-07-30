@@ -43,7 +43,7 @@ $host .= $_SERVER['HTTP_HOST'];
     <a href="<?php echo $host."/index.php?cmd=random"?>"><li class="list-contents menu-random"><i class="fa fa-random fa-lg"></i><div class="list-text">おまかせ</div></li></a>
     <li class="list-blank"></li>
     <a href="<?php echo $host."/index.php?cmd=edit"?>"><li class="list-contents menu-newpage"><i class="fa fa-file-o fa-lg"></i><div class="list-text">新規ページ</div></li></a>
-    <a href="<?php echo $host."/index.php?cmd=admin"?>"><li class="list-contents menu-admin"><i class="fa fa-cog fa-lg"></i><div class="list-text">管理メニュー</div></div></li></a>
+    <!--<a href="<?php echo $host."/index.php?cmd=admin"?>"><li class="list-contents menu-admin"><i class="fa fa-cog fa-lg"></i><div class="list-text">管理メニュー</div></div></li></a>-->
   </ul>
 </nav>
 
@@ -61,7 +61,7 @@ $host .= $_SERVER['HTTP_HOST'];
           <div class="col-xs-9 search-area">
             <div class="row">
               <div class="col-xs-2"><i class="fa fa-search fa-lg" ></i></div>
-                <form method="GET" action="search.php">
+                <form method="post" action="http://lbt.webcrow.jp/index.php?cmd=category">
                   <input class="search-text col-xs-10" type="text" name="search" placeholder="検索フィード" />
                 </form>
             </div>

@@ -76,52 +76,160 @@ $host .= $_SERVER['HTTP_HOST'];
   <div class="upper-mask"></div>
 
   <header>
-    <div class="icon">
-      <i class="fa fa-arrow-left fa-2x"></i>
+    <div class="header-ber" id="entry-info-ber">
+      <div class="icon">
+        <i class="fa fa-arrow-left fa-2x"></i>
+      </div>
+      <div class="title">
+        <?php if(isset($info))echo $info["title"] ?>
+      </div>
+      <div class="save">
+        保存
+      </div>
+      <div class="show-before-config">
+        <i class="fa fa-cog fa-2x"></i>
+      </div>
     </div>
-    <div class="title">
-      <?php if(isset($info))echo $info["title"] ?>
+    <div class="header-ber" id="editor-info-ber">
+      <div class="icon" id="undo">
+        <i class="fa fa-undo fa-2x"></i>
+      </div>
+      <div class="icon" id="redo">
+        <i class="fa fa-repeat fa-2x"></i>
+      </div>
+      <div class="icon" id="insert_image">
+        <i class="fa fa-picture-o fa-2x"></i>
+      </div>
+      <div class="icon-drop text_style_show">
+        <i class="fa fa-font fa-2x"></i>
+        <i class="fa fa-angle-down"></i>
+      </div>
+      <div class="save">
+        保存
+      </div>
+      <div class="show-before-config">
+        <i class="fa fa-cog fa-2x"></i>
+      </div>
     </div>
-    <div class="save">
-      保存
+    <div class="tool-box-popup font-style">
+      <table>
+        <tr  onclick="format_headline()" id="tr_format_headline">
+          <td>
+            <div onclick="format_headline" class="font-style-table" id="headline">
+              <u><i class="fa  fa-angle-down fa-1x"></i>
+              <i class="text">見出し</i></u>
+            </div>
+          </td>
+        </tr>
+        <tr id="tr_bold">
+          <td>
+            <div onclick="text_bold()" class="font-style-table bold">
+              <i class="text">太字</i>
+            </div>
+          </td>
+        </tr>
+        <tr id="tr_underline">
+          <td>
+            <div onclick="text_underline()" class="font-style-table underline">
+              <i class="text">下線</i>
+            </div>
+          </td>
+        </tr>
+        <tr id="tr_cancel">
+          <td>
+            <div onclick="text_cancel()" class="font-style-table cancel">
+              <i class="text">取り消し線</i>
+            </div>
+          </td>
+        </tr>
+        <tr id="tr_list">
+          <td>
+            <div onclick="text_list()" class="font-style-table list">
+              <i class="text">・箇条書き</i>
+            </div>
+          </td>
+        </tr>
+        <tr id="tr_indent">
+          <td>
+            <div onclick="text_indent_show()" class="font-style-table indent">
+              <i class="text">インデント</i></i>
+            </div>
+          </td>
+        </tr>
+      </table>
     </div>
-    <div class="show-before-config">
-      <i class="fa fa-cog fa-2x"></i>
+    <div id="indent_popup">
+      <table>
+        <tr>
+          <td>
+            <div onclick="text_indent('down')" class="font-style-table indent">
+              <i class="fa fa-indent fa-1x"></i>
+              <i class="text">字下げ</i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div onclick="text_indent('up')" class="font-style-table indent">
+              <i class="fa fa-outdent fa-1x"></i>
+              <i class="text">字上げ</i>
+            </div>
+          </td>
+        </tr>
+      </table>
     </div>
   </header>
-
+  <?php
+if(isset($_GET["page"])){
+    $page = $_GET["page"];
+    if( isset($_GET["ver"]) ){
+      $ver = $_GET["ver"];
+      $data = read_db($page,$ver);
+    }else{
+      $data = read_db($page);
+    }
+    $html = [];
+    $html = htmlspecialchars($data['html']);
+    // $html = json_encode($html,JSON_UNESCAPED_UNICODE);
+}
+   ?>
   <div class="main-contents">
+    <iframe id="editorframe" frameborder="0" src="<?=$host?>/lib/editor-iframe.php<?php echo isset($_GET['page'])?'?page='.$_GET['page']:''?><?php echo isset($_GET['var'])?'&var='.$_GET['var']:''?>"></iframe>
+    <div class="setting" id="editor-setting">
+      <div>
+        エディタ領域のサイズ調整
+      </div>
+      <div class="setting" id="height-setting-area">
+        <div class="button" id="minus">
+          <i class="fa fa-minus fa-1x"></i>
+        </div>
+        <div class="num" id="editor-height">
+          5
+        </div>
+        <div class="button" id="plus">
+          <i class="fa fa-plus fa-1x"></i>
+        </div>
+      </div>
+    </div>
+    <form id="foo" style="display:none">
+      <input id="file" name="file" type="file" />
+    </form>
+    <input id="hoge" type="hidden" value="hoge">
+
     <div class="editor-rapper">
-      <textarea name="visual-editor" id="visualEditor"></textarea>
-      <?php
-  if(isset($_GET["page"])){
-        $page = $_GET["page"];
-        if( isset($_GET["ver"]) ){
-          $ver = $_GET["ver"];
-          $data = read_db($page,$ver);
-        }else{
-          $data = read_db($page);
-        }
-        $html = [];
-        $html = htmlspecialchars($data['html']);
-        // $html = json_encode($html,JSON_UNESCAPED_UNICODE);
-  }
-       ?>
       <div id="pre-text" style="display:none" phtml="<?php echo isset($html)?$html:""; ?>" pcategory="<?php echo isset($data['category'][0])?$data['category'][0]:"";?>"</div>
     </div>
   </div>
 
 
-<!-- Include JQery -->
-<script src="./resource/jquery/jquery-3.1.1.min.js"></script>
-<!-- CKEditorの呼び出し -->
-<script src="./resource/ckeditor/ckeditor.js"></script>
+  <!-- Include JQery -->
+  <script src="<?=$host?>/resource/jquery/jquery-3.1.1.min.js"></script>
+  <!-- Setup designMode -->
   <script>
-      // Replace the <textarea id="editor1"> with a CKEditor
-      // instance, using default configuration.
-      CKEDITOR.replace( 'visualEditor' );
+    editor = document.getElementsByTagName("iframe")[0].contentDocument;
+    // editor.designMode = "On";
   </script>
-  <script src="./resource/js/editor.js"></script>
-  <link href="./resource/css/editor.css" rel="stylesheet" />
+  <script src="<?=$host?>/resource/js/editor.js"></script>
+  <link href="<?=$host?>/resource/css/editor.css" rel="stylesheet" />
 </body>
 </html>

@@ -74,7 +74,7 @@ $host .= $_SERVER['HTTP_HOST'];
     <a href="<?php echo $host."/index.php?cmd=random"?>"><li class="list-contents menu-random"><i class="fa fa-random fa-lg"></i><div class="list-text">おまかせ</div></li></a>
     <li class="list-blank"></li>
     <a href="<?php echo $host."/index.php?cmd=edit"?>"><li class="list-contents menu-newpage"><i class="fa fa-file-o fa-lg"></i><div class="list-text">新規ページ</div></li></a>
-    <a href="<?php echo $host."/index.php?cmd=admin"?>"><li class="list-contents menu-admin"><i class="fa fa-cog fa-lg"></i><div class="list-text">管理メニュー</div></div></li></a>
+    <!--<a href="<?php echo $host."/index.php?cmd=admin"?>"><li class="list-contents menu-admin"><i class="fa fa-cog fa-lg"></i><div class="list-text">管理メニュー</div></div></li></a>-->
   </ul>
 </nav>
 
@@ -92,7 +92,7 @@ $host .= $_SERVER['HTTP_HOST'];
           <div class="col-xs-9 search-area">
             <div class="row">
               <div class="col-xs-2"><i class="fa fa-search fa-lg" ></i></div>
-                <form method="GET" action="search.php">
+                <form method="post" action="http://lbt.webcrow.jp/index.php?cmd=category">
                   <input class="search-text col-xs-10" type="text" name="search" placeholder="検索フィード" />
                 </form>
             </div>
@@ -151,10 +151,10 @@ $host .= $_SERVER['HTTP_HOST'];
 
     <div class="main-text-area-"> <!-- 記事本文 -->
       <div>
-        <p>LBT_wikiはLBT部員が知識やノウハウなど好きなことを今後のLBT部のために形に残る知識を共有するためのサービスです。</p>
+        <p>LBT_wikiはLBT部員が知識やノウハウなど好きなことを今後のLBT部のために形に残る知識を共有するためのアンオフィシャルなサービスです。</p>
         <p>検索するには上の検索バーで検索できます</p>
         <p>知識を書くには左上の「三」みたいなボタンを押してみてください</p>
-        <p><u>画像アップロード機能は今作ってます！もうちょい待って！！</u></p>
+        <p><u>画像アップロード機能実装しました！！</u></p>
         <p><b>βテスト版で書いた記事は全て残るので、みなさん書いて！！</b></p>
       </div>
     </div>
