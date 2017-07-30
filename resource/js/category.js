@@ -27,7 +27,7 @@ function initSection(){
 }
 $(function(){
   // アコーディオンを開く
-  $('div.main-text-area > h2').next('div').toggle();
+  //$('div.main-text-area > h2').next('div').toggle();
   // 記事の数を表示
   var listCount = [];
   for(var i = 0,h2count = $('div.main-text-area > h2').length;i < h2count;i++){

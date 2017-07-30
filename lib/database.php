@@ -9,6 +9,48 @@
 */
 
 
+/**
+ * slackへ通知を送信する
+ * @param  {string} $text 送信する文章
+ */
+function sendSlack($text) {
+  $webhook_url = 'https://hooks.slack.com/services/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';
+  $message = [
+    'username' => 'WikiBot',
+    // 'text' => $text,
+    'attachments' => [
+      [
+        'title' => 'タイトル',
+        // 'title_link' => 'http:/lbt.webcrow.jp',
+        'text' => $text
+      ]
+    ],
+    "channel" => "#develop-notification"
+  ];
+  $contents = json_encode($message,JSON_UNESCAPED_UNICODE);
+  $options = array(
+    'http' => array(
+      'method' => 'POST',
+      'header' => 'Content-Type: application/json',
+      'content' => $contents
+    )
+  );
+
+
+
+$msg = 'payload=' . urlencode($contents);
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $webhook_url);
+curl_setopt($ch, CURLOPT_HEADER, false);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $msg);
+curl_exec($ch);
+curl_close($ch);
+  //file_get_contents($webhook_url, false, stream_context_create($options));
+}
+
 
 /**
  * 処理ログをテキストファイルとして吐く関数
@@ -20,7 +62,7 @@
 function putLog($text,$type = err){
 
   date_default_timezone_set('Asia/Tokyo'); //タイムゾーン設定
-  $out = date("H:i").",";
+  $out = date("m/d_H:i").",";
   $text = ($text === false) ? "falseが返却されました" : $text;
   $text = ($text === true) ? "trueが返却されました" : $text;
 
@@ -37,6 +79,7 @@ function putLog($text,$type = err){
       $out .= "dir,\n".print_r($text,true)."-----------\n";
       break;
   }
+  sendSlack($text);
   chdir(__DIR__);  // ワークディレクトリを戻す
   chdir("../log");  //ワークディレクトリを../logに変更
   if (file_put_contents("log.log",$out,FILE_APPEND) === false){
@@ -159,7 +202,6 @@ function addEntryIndex($page,$title,$author,$ip,$description){
   chdir(__DIR__);  // ワークディレクトリを戻す
   chdir("../db/entry/index");  //ワークディレクトリを../dbに変更
   file_put_contents($fileName,sprintf(json_encode($entryIndex,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)));
-
   return true;
 }
 

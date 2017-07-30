@@ -298,7 +298,9 @@ div.relation-entry div.title{  /* 関連ページ タイトル */
 }
 
 
-
+footer{
+   padding-top: 5px;
+}
 footer >  div.copy-write{  /* コピーライト */
   margin-left: 15px;
   margin-right: 15px;
