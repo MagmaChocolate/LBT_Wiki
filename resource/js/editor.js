@@ -53,7 +53,7 @@ function postData(){
     'author': $('div.author input').val(),
     'category': category
   };
-  var pageNum = location.href.replace(/.*page=([0-9])/,function(){return arguments[1]})
+  var pageNum = location.href.replace(/.*page=([0-9]+)/gi,function(){return arguments[1]})
   if(pageNum != location.href){
     sendText.page = pageNum;
   }
@@ -67,7 +67,7 @@ function postData(){
     data: sendText,
     dataType: 'json',  //レスポンスとして受け取ったデータタイプの指定レスポンスは変数dataに格納される
     cache: false,
-    timeout: 1000,
+    timeout: 10000,
     beforeSend: function(){
       showLoading('show','送信中です');
     }
@@ -104,6 +104,7 @@ function postData(){
     }
   })
   .fail(function(data){  // 通信失敗時に呼び出される部分
+    console.log(data);
     showLoading('err','もう一度送信してください');
   });
 }
@@ -423,3 +424,7 @@ $('#plus').on('click',function(){
 //     $('iframe').contents().find('head').append('<link href="./resource/css/editor-iframe.css" rel="stylesheet" type="text/css" media="all" />');
 //   }
 // });
+
+setTimeout(function(){
+  $('div[style*=z-index][style*=overflow]').css('display','none');
+},50);
