@@ -24,8 +24,8 @@ phpmyadmin:
      - "8080:80"
   volumes:
      - ./phpmyadmin:/sessions
-
 php-7.0:
+#ログは/var/log/apache2に吐かれる
   build: .
   ports:
     - "80:80"
