@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteBase /
+RewriteRule ^([0-9]+) index.php?cmd=view&page=$1 [L]
+RewriteRule ^edit/([0-9]+) index.php?cmd=edit&page=$1 [L]
+RewriteRule ^edit index.php?cmd=edit [L]
+RewriteRule ^category index.php?cmd=category [L]
+RewriteRule ^random index.php?cmd=random [L]

@@ -1,4 +1,7 @@
 <?php
+global $host;
+$host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
+$host .= $_SERVER['HTTP_HOST'];
 /**
  * getのcmd属性に従っって処理を分ける
  * @return [type] [description]

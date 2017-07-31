@@ -16,7 +16,7 @@ $host .= $_SERVER['HTTP_HOST'];
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- include FontAwesome -->
-  <link rel="stylesheet" href="./resource/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="<?=$host?>/resource/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
   <?php require(__DIR__."/google-analytics.php");?>

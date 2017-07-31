@@ -14,22 +14,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- include FontAwesome -->
-  <link rel="stylesheet" href="../resource/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="<?=$host?>/resource/font-awesome/css/font-awesome.min.css">
   <!-- include Bootstrap -->
-  <link href="../resource/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<?=$host?>/resource/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="drawer drawer--left ">
-<!-- サイドメニュー -->
-<nav class="side-menu-area drawer-nav">
-  <ul class="list-area drawer-menu">
-    <li class="list-contents menu-home"><i class="fa fa-home fa-lg"></i><div class="list-text">ホーム</div></li>
-    <li class="list-contents menu-category"><i class="fa fa-list-ul fa-lg"></i><div class="list-text">カテゴリ</div></li>
-    <li class="list-contents menu-random"><i class="fa fa-random fa-lg"></i><div class="list-text">おまかせ</div></li>
-    <li class="list-blank"></li>
-    <li class="list-contents menu-newpage"><i class="fa fa-file-o fa-lg"></i><div class="list-text">新規ページ</div></li>
-    <li class="list-contents menu-admin"><i class="fa fa-cog fa-lg"></i><div class="list-text">管理メニュー</div></div></li>
-  </ul>
-</nav>
+<?php include('../lib/side-bar.php');  ?>
 
 
 <!-- メインコンテンツ -->
@@ -74,12 +64,13 @@
       <li class="breadcrumb-contents">ヘルプ</li>
     </ul>
     <div class="main-text-area"> <!-- 記事本文 -->
+      <script src="https://gist.github.com/magcho/72e648c007564bb71a538ad844397e94.js"></script>
       <p>
-        こちらはヘルプページですが作り途中のため内容がありません。お手数ですがお困りの際は開発者へTwitterやLINEなどから連絡ください。
+        こちらはヘルプページですが作り途中のため内容完全ではありません。お手数ですがお困りの際は開発者へTwitterやLINEなどから連絡ください。
       </p>
       <p>
         開発者Twitter <a href="https://twitter.com/LiSA_sue0527">@LiSA_sue0527</a><br />
-        開発者Github <a href="https://github.com/MagmaChocolate/">MagmaChocolate</a>
+        開発者Github <a href="https://github.com/MagCho/">MagmaChocolate</a>
       </p>
     </div>
   </div> <!-- class="container" -->
@@ -105,21 +96,21 @@
 
 
 <!-- Include JQery -->
-<script src="../resource/jquery/jquery-3.1.1.min.js"></script>
+<script src="<?=$host?>/resource/jquery/jquery-3.1.1.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../resource/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="<?=$host?>/resource/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
 
 <!-- drawer.css -->
-<link rel="stylesheet" href="../resource/drawer/css/drawer.min.css">
+<link rel="stylesheet" href="<?=$host?>/resource/drawer/css/drawer.min.css">
 <!-- jquery & iScroll -->
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
-<script src="../resource/iscroll/iscroll.js"></script>
+<script src="<?=$host?>/resource/iscroll/iscroll.js"></script>
 <!-- drawer.js -->
-<script src="../resource/drawer/js/drawer.min.js"></script>
+<script src="<?=$host?>/resource/drawer/js/drawer.min.js"></script>
 <script>$(document).ready(function(){$('.drawer').drawer();});</script>
 
-<script src="../resource/js/view.js"></script>
-<link href="../resource/css/view.css" rel="stylesheet" />
+<script src="<?=$host?>/resource/js/view.js"></script>
+<link href="<?=$host?>/resource/css/view.css" rel="stylesheet" />
 </body>
 </html>
