@@ -19,9 +19,34 @@ $host .= $_SERVER['HTTP_HOST'];
   <link rel="stylesheet" href="<?=$host?>/resource/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
+  <!--index.phpで定義済み <?php //require(__DIR__.'/database.php'); ?> -->
   <?php require(__DIR__."/google-analytics.php");?>
   <script>
     var newFlag = <?php echo !isset($info)?"true":"false"?>;
+  <?php
+    if(isset($_GET['page'])){ //エディターの取得用
+      if(!thisPageExisting($_GET['page'])){
+        // 指定されたページ番号の記事は存在しませんでした
+         echo "const preData = 'new'";
+      }else{
+        // 過去の記事を取得
+        $fetch = read_db($_GET['page']);
+        $html_txt = preg_replace('/<script[^>]+?\/>|<script(.|\s)*?\/script>/','',$fetch['html']);
+        $html_txt = preg_replace('/\"/','\\"',$html_txt);
+        $html_txt = preg_replace('/\n/','',$html_txt);
+        // $html_txt = htmlspecialchars($html_txt);
+        echo "var preData = {
+          'html': '{$html_txt}',
+          'category': '{$fetch['category']}',
+          'author': '{$fetch['author']}',
+          'title': '{$fetch['title']}',
+          'eyecatch': '{$fetch['eyecatch']}'
+        }";
+      }
+    }else{
+      // 新規記事作成なので、何もしない
+    }
+   ?>
   </script>
   <div class="entry-config before">
     <div class="text"><?php echo isset($info)?$info["title"]."を編集中":"新規記事の作成"?></div>
@@ -194,7 +219,7 @@ if(isset($_GET["page"])){
 }
    ?>
   <div class="main-contents">
-    <iframe id="editorframe" frameborder="0" src="<?=$host?>/lib/editor-iframe.php<?php echo isset($_GET['page'])?'?page='.$_GET['page']:''?><?php echo isset($_GET['var'])?'&var='.$_GET['var']:''?>"></iframe>
+    <iframe id="editorframe" frameborder="0"></iframe>
     <div class="setting" id="editor-setting">
       <div>
         エディタ領域のサイズ調整

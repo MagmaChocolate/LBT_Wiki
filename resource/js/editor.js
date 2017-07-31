@@ -23,6 +23,14 @@
 //   return categoryKey;
 // }
 
+
+/**
+ * 既存記事のデータをiframeに入力
+ */
+$(function(){
+  $('iframe').contents().find('head').html('<link rel="stylesheet" href="'+location.href.replace(/(^.*)\/index.*/,function(){return arguments[1]})+'/resource/css/editor-iframe.css">');
+  $('iframe').contents().find('body').html(preData.html);
+});
 /**
  * <textarea>にフォーカスしている時にヘッダーを隠す
  * フォーカスオフした時のイベントが取れない（理解していない）ので実装見送り
