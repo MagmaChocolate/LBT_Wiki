@@ -587,14 +587,14 @@ $newFlag = false;
 */
   if($newFlag){
     // 新規記事の保存
-    if(!saveEntryBody($page,$title,$description,$html)){return false;}
-    if(!newEntryIndex($page,$title,$author,$ip,$description)){return false;}
-    if(!addAllEntryList($page,$title,$author,$category,$eyecatch)){return false;}
+    if(!saveEntryBody($page,$title,$description,$html)){return 'err1';}
+    if(!newEntryIndex($page,$title,$author,$ip,$description)){return 'err2';}
+    if(!addAllEntryList($page,$title,$author,$category,$eyecatch)){return 'err3';}
   }else{
     // 既存記事の保存
-    if(!saveEntryBody($page,$title,$description,$html)){return false;}
-    if(!addEntryIndex($page,$title,$author,$ip,$description)){return false;}
-    if(!addAllEntryList($page,$title,$author,$category,$eyecatch)){return false;}
+    if(!saveEntryBody($page,$title,$description,$html)){return 'err4';}
+    if(!addEntryIndex($page,$title,$author,$ip,$description)){return 'err5';}
+    if(!addAllEntryList($page,$title,$author,$category,$eyecatch)){return 'err6';}
   }
   return $page;
 }
