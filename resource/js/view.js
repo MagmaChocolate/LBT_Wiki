@@ -73,6 +73,14 @@ $(function(){
   });
 });
 
+  /**
+   * タイトル検索用の取得済みデータを取得
+   * @return {[type]} [description]
+   */
+  +function(){
+
+  }
+
 
 
 /**
@@ -87,9 +95,10 @@ $(function(){
    */
   function event_search(searchWord){
     var Result = [];
-    for (var i in G_entryListst){
-      if ( G_entryListst[i].title.indexOf(searchWord) != -1) {
-        Result.push(G_entryListst[i]);
+    let G_entry = JSON.parse(localStorage.getItem("entryList"));
+    for (var i in G_entry){
+      if ( G_entry[i].title.indexOf(searchWord) != -1) {
+        Result.push(G_entry[i]);
       }
     }
     return Result;
@@ -100,11 +109,12 @@ $(function(){
    * @param  {object} Result event_search()の返り値
    */
   function showSearchResult(Result){
-    var host = location.href
+    var host = 'http://'+location.host;
     host = host.replace(/(^.*)\/index.*/,function(){return arguments[1]}); // http://rfs.jp/sb/javascript/js-lab/javascript_replace_regexp.html
     var text = '<tr class="allSearchEntry"><td class="col-xs-12"><i class="fa fa-file-text-o"></i>全文検索</td></tr>';
     Object.keys(Result).forEach(function (key) {  // http://qiita.com/nantekkotai/items/6c603b40ac2264e9f6f6
-      text = text + '<tr class="search-result-content"><td><a href="'+host+'/index.php?cmd=view&page='+Result[key].page+'"><img src="./resource/img/lbt-logo.png" class="search-result-img" />';
+      text = text + '<tr class="search-result-content"><td><a href="'+host+'/'+Result[key].page+'/">';
+      text = text + '<img src="'+host+'/resource/img/lbt-logo.png" class="search-result-img" />';
       text = text + Result[key].title +'</a></td></tr>';
     });
     $('.search-result').html(text);
