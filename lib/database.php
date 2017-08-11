@@ -528,11 +528,15 @@ function fetchAllIndex(){
   $json = mb_convert_encoding($json, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
   $entryList = json_decode($json,true); //連想配列に変換
 
-  $out = [];
-  foreach ($entryList as $value) {
-    $out[] = ["title" => $value["title"],"page" => $value["id"],"category" => $value["category"]];
+  // $out = [];
+  // foreach ($entryList as $value) {
+  //   $out[] = ["title" => $value["title"],"page" => $value["id"],"category" => $value["category"]];
+  // }
+  // return $out;
+  foreach ($entryList as $key => $value) {
+    $entryList[$key]['page'] = $value['id'];
   }
-  return $out;
+  return $entryList;
 }
 
 
@@ -587,14 +591,14 @@ $newFlag = false;
 */
   if($newFlag){
     // 新規記事の保存
-    if(!saveEntryBody($page,$title,$description,$html)){return false;}
-    if(!newEntryIndex($page,$title,$author,$ip,$description)){return false;}
-    if(!addAllEntryList($page,$title,$author,$category,$eyecatch)){return false;}
+    if(!saveEntryBody($page,$title,$description,$html)){return 'err1';}
+    if(!newEntryIndex($page,$title,$author,$ip,$description)){return 'err2';}
+    if(!addAllEntryList($page,$title,$author,$category,$eyecatch)){return 'err3';}
   }else{
     // 既存記事の保存
-    if(!saveEntryBody($page,$title,$description,$html)){return false;}
-    if(!addEntryIndex($page,$title,$author,$ip,$description)){return false;}
-    if(!addAllEntryList($page,$title,$author,$category,$eyecatch)){return false;}
+    if(!saveEntryBody($page,$title,$description,$html)){return 'err4';}
+    if(!addEntryIndex($page,$title,$author,$ip,$description)){return 'err5';}
+    if(!addAllEntryList($page,$title,$author,$category,$eyecatch)){return 'err6';}
   }
   return $page;
 }

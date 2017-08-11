@@ -48,6 +48,7 @@ global $host;
     $returnData = ["message" => "success","page" => $return];
     $text_slack = 'entry added.  <'.$host.'/index.php?cmd=view&page='.$return.'|「'.$_POST["title"].'」>';
     sendSlack($text_slack);
+    putLog($return);
   }else{
     // 保存失敗
     $returnData = ["message" => "ERR_save_database()"];
