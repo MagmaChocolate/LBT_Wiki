@@ -528,11 +528,15 @@ function fetchAllIndex(){
   $json = mb_convert_encoding($json, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
   $entryList = json_decode($json,true); //連想配列に変換
 
-  $out = [];
-  foreach ($entryList as $value) {
-    $out[] = ["title" => $value["title"],"page" => $value["id"],"category" => $value["category"]];
+  // $out = [];
+  // foreach ($entryList as $value) {
+  //   $out[] = ["title" => $value["title"],"page" => $value["id"],"category" => $value["category"]];
+  // }
+  // return $out;
+  foreach ($entryList as $key => $value) {
+    $entryList[$key]['page'] = $value['id'];
   }
-  return $out;
+  return $entryList;
 }
 
 
