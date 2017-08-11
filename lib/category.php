@@ -2,6 +2,7 @@
 $host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
 $host .= $_SERVER['HTTP_HOST'];
 
+$fetchData["title"] = 'カテゴリー一覧';
 require(__DIR__."/header.php");
 ?>
 <style>
@@ -47,7 +48,9 @@ div.contents-count{
             if(!$noneFlag){
               echo '<h2><i class="fa fa-angle-up fa-1x"></i>カテゴリー指定なし</h2><div class="main-text"><ul class="category-list">';
             }
-            echo '<a href="'.$host.'/'.$value2["page"].'"><li class="category-list">'.$value2["title"].'</li></a>';
+            if($value2['state'] == 'public'){
+              echo '<a href="'.$host.'/'.$value2["page"].'"><li class="category-list">'.$value2["title"].'</li></a>';
+            }
             $noneFlag = true;
           }
         }
@@ -59,7 +62,9 @@ div.contents-count{
           echo '<h2><i class="fa fa-angle-up fa-1x"></i>'.$value1.'</h2><div class="main-text"><ul class="category-list">';
           foreach ($allEntryInfo as $value2) {
             if($value2["category"][0] == $value1){
-              echo '<a href="'.$host.'/'.$value2["page"].'"><li class="category-list">'.$value2[title].'</li></a>';
+              if($value2['state'] == 'public'){
+                echo '<a href="'.$host.'/'.$value2["page"].'"><li class="category-list">'.$value2[title].'</li></a>';
+              }
             }
           }
           echo '</ul></div>';
