@@ -85,6 +85,7 @@
  * @param string $author   作者名
  * @param array  $category [省略可]カテゴリを一次配列で渡す
  * @param string $eyecatch [省略可]アイキャッチ画像へのリンク
+ * @param srting $state    記事の公開設定
  * @return boolean         正常終了はtrue、失敗はfalse
  */
 ```
