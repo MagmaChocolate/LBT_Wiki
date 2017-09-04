@@ -3,6 +3,7 @@
  @param $title <meta>のタイトルの文字列
  -->
 <?php
+require_once(__DIR__.'common.php');
 $host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
 $host .= $_SERVER['HTTP_HOST'];
 ?>
@@ -12,7 +13,7 @@ $host .= $_SERVER['HTTP_HOST'];
   <!-- TwitterCards -->
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@LBT_LiSA" />
-  <meta name="twitter:title" content="<?php echo ($fetchData["title"].' | LBT_wiki'); ?>" />
+  <meta name="twitter:title" content="<?php echo (escapeHtml($fetchData["title"]).' | LBT_wiki'); ?>" />
   <meta name="twitter:description" content="LBT部員のための知識共有サービス" />
   <meta name="twitter:image" content="<?php echo $host?>/resource/img/twitter-cards.png" />
 
@@ -24,7 +25,7 @@ $host .= $_SERVER['HTTP_HOST'];
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000">
   <meta name="theme-color" content="#ffffff">
 
-  <title><?php echo ($fetchData["title"].' | LBT_wiki'); ?></title>
+  <title><?php echo (escapeHtml($fetchData["title"]).' | LBT_wiki'); ?></title>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
