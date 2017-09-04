@@ -1,4 +1,5 @@
 <?php
+require_once(__DIR__.'/common.php');
 $host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
 $host .= $_SERVER['HTTP_HOST'];
 
@@ -49,7 +50,7 @@ div.contents-count{
               echo '<h2><i class="fa fa-angle-up fa-1x"></i>カテゴリー指定なし</h2><div class="main-text"><ul class="category-list">';
             }
             if($value2['state'] == 'public'){
-              echo '<a href="'.$host.'/'.$value2["page"].'"><li class="category-list">'.$value2["title"].'</li></a>';
+              echo '<a href="'.$host.'/'.$value2["page"].'"><li class="category-list">'.escapeHtml($value2["title"]).'</li></a>';
             }
             $noneFlag = true;
           }
@@ -63,7 +64,7 @@ div.contents-count{
           foreach ($allEntryInfo as $value2) {
             if($value2["category"][0] == $value1){
               if($value2['state'] == 'public'){
-                echo '<a href="'.$host.'/'.$value2["page"].'"><li class="category-list">'.$value2[title].'</li></a>';
+                echo '<a href="'.$host.'/'.$value2["page"].'"><li class="category-list">'.escapeHtml($value2[title]).'</li></a>';
               }
             }
           }
