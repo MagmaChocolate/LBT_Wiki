@@ -2,12 +2,13 @@
   relation: index.php
 -->
 <?php
+require_once(__DIR__.'/common.php');
 $host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
 $host .= $_SERVER['HTTP_HOST'];
 ?>
 <footer class="footer">  <!-- フッター -->
   <div class="last-edit">
-    <i class="fa fa-history"></i>最終更新: <?php echo $fetchData["author"];?><i class="fa fa-angle-double-right fa-1x"></i>
+    <i class="fa fa-history"></i>最終更新: <?php echo escapeHtml($fetchData["author"]);?><i class="fa fa-angle-double-right fa-1x"></i>
   </div>
 
   <div class="relation-entry">  <!-- 関連記事 -->
