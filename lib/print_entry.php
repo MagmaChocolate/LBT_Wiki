@@ -38,7 +38,7 @@ return $value;
 $fetchData["html"] = makeLink($fetchData["html"]);
 ?>
 <div class="main-contents">  <!-- 記事部分 -->
-  <h1><?php echo $fetchData["title"];?></h1>
+  <h1><?php echo escapeHtml($fetchData["title"]);?></h1>
   <div class="tools"><a href="<?php echo $host?>/index.php?cmd=edit&page=<?php echo $_GET["page"]?>"><i class="fa fa-pencil fa-2x"></i></a></div>
 </div>
 <ul class="breadcrumb-list">  <!-- パンくずリスト -->
