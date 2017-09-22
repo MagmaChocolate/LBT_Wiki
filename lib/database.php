@@ -510,7 +510,8 @@ function fetchInfo($page){
       if($value['id'] == $page){
         $title = $value["title"];
         $category = $value["category"];
-        $out = ["title" => $title,"category" => $category];
+        $state = $value['state'];
+        $out = ["title" => $title,"category" => $category,"state" => $state];
         return $out;
       }
     }

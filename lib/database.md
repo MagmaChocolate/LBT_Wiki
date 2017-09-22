@@ -105,7 +105,7 @@
 /**
  * 記事idから既存の記事の情報を返す
  * @param  {int} $page 記事id
- * @return {array}     {"title"=>"記事タイトル","category"=>["音響","マイク"]}
+ * @return {array}     {"title"=>"記事タイトル","category"=>["音響","マイク"],"state" => public or private}
  *                     エラーはfalseを返す
  */
 ```
