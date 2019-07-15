@@ -118,5 +118,20 @@
         },
         "author": "スエタケ",
         "ip": 1025147438
+    },
+    {
+        "title": "LBT_Wikiについて",
+        "ver": 9,
+        "description": "URL修正",
+        "day": {
+            "year": 2017,
+            "month": 7,
+            "_day": 30,
+            "hour": 22,
+            "minute": 47,
+            "second": 59
+        },
+        "author": "スエタケ",
+        "ip": 1025147438
     }
 ]
