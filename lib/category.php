@@ -35,6 +35,7 @@ div.contents-count{
       <div class="category-area">
         <p>現在LBT_Wikiに存在する全記事の一覧です。</p>
         <p>そのうち５０音順に並ぶ様にアップデート予定です</p>
+				<p>本wikiは使われなくなったので令和元年7月31日を目安に閉鎖します</p>
       </div>
     </div>
 

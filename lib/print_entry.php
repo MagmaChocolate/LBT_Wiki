@@ -38,6 +38,7 @@ return $value;
 $fetchData["html"] = makeLink($fetchData["html"]);
 ?>
 <div class="main-contents">  <!-- 記事部分 -->
+		<p><b>本wikiは使われなくなったので、令和元年7月31日を目安に閉鎖します。日程は前後する場合があります。</b></p>
   <h1><?php echo escapeHtml($fetchData["title"]);?></h1>
   <div class="tools"><a href="<?php echo $host?>/index.php?cmd=edit&page=<?php echo $_GET["page"]?>"><i class="fa fa-pencil fa-2x"></i></a></div>
 </div>
