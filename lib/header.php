@@ -53,7 +53,7 @@ $host = "https://lbt-wiki.magcho.com";
           <div class="col-xs-9 search-area">
             <div class="row">
               <div class="col-xs-2"><i class="fa fa-search fa-lg" ></i></div>
-                <form method="post" action="http://lbt.webcrow.jp/index.php?cmd=category">
+                <form method="post" action="https://lbt.webcrow.jp/index.php?cmd=category">
                   <input class="search-text col-xs-10" type="text" name="search" placeholder="検索フィード" />
                 </form>
             </div>

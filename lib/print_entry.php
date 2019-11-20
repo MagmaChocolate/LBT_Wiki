@@ -2,9 +2,9 @@
   relation: index.php
 -->
 <?php
-$host = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
-$host .= $_SERVER['HTTP_HOST'];
-
+// $host = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
+// $host .= $_SERVER['HTTP_HOST'];
+    $host = "https://lbt-wiki.magcho.com";
 /**
  * データベースの記事データをhtmlで表示した時にセクションで折り畳めるようにする
  * クロージャー関数、いわゆる即時関数

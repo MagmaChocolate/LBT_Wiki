@@ -86,7 +86,7 @@ $host = "https://lbt-wiki.magcho.com";
           <div class="col-xs-9 search-area">
             <div class="row">
               <div class="col-xs-2"><i class="fa fa-search fa-lg" ></i></div>
-                <form method="post" action="http://lbt.webcrow.jp/index.php?cmd=category">
+                <form method="post" action="https://lbt.webcrow.jp/index.php?cmd=category">
                   <input class="search-text col-xs-10" type="text" name="search" placeholder="検索フィード" />
                 </form>
             </div>
@@ -163,7 +163,7 @@ $host = "https://lbt-wiki.magcho.com";
         <h3>LBT_Wiki</h3>
         <div class="text">
           このサイトの全てに対し無断転載を禁じます。
-          Copywrite 2017 LBT部のみなさん.
+          Copywrite 2017- LBT部のみなさん.
         </div>
       </div>
       <div class="links">

@@ -5,8 +5,9 @@
  * @GET['var'] {int} 記事バージョン（省略時は最新を取得）
  * @return {string} 記事本文を返す
  */
-$host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
-$host .= $_SERVER['HTTP_HOST'];
+// $host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
+// $host .= $_SERVER['HTTP_HOST'];
+$host = "https://lbt-wiki.magcho.com";
 require(__DIR__.'/database.php');
 ?>
 <!DOCTYPE html>

@@ -7,9 +7,9 @@
 not found時に表示するページ
 -->
 <?php
-$host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
-$host .= $_SERVER['HTTP_HOST'];
-
+// $host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
+// $host .= $_SERVER['HTTP_HOST'];
+    $host = "https://lbt-wiki.magcho.com";
 $fetchData["title"] = "アクセスしたURLのページはありませんでした";
 require("header.php");
 ?>
@@ -43,7 +43,7 @@ require("header.php");
       </div>
       <div class="links">
         <a href="<?=$host?>/help/">ヘルプ</a>
-        <a href="https://twitter.com/LiSA_sue0527">コンタクト</a>
+        <a href="https://github.com/magcho/">github</a>
       </div>
     </footer>
   <!-- </div> -->
