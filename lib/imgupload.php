@@ -14,8 +14,9 @@ if (is_uploaded_file($_FILES["file"]["tmp_name"])) {
   }
   if (move_uploaded_file($_FILES["file"]["tmp_name"], $dirPath . $SAVE_NAME)) {
     chmod($dirPath . $SAVE_NAME, 0644);
-    $host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
-    $host .= $_SERVER['HTTP_HOST'];
+    // $host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
+    // $host .= $_SERVER['HTTP_HOST'];
+    $host = "https://lbt-wiki.magcho.com";
     $data = array('messgae' => 'Succes',
                   'code' => 1);
     if(isset($_GET["page"])){

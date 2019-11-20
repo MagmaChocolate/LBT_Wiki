@@ -1,6 +1,7 @@
 <?php
-$host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
-$host .= $_SERVER['HTTP_HOST'];
+//$host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
+//$host .= $_SERVER['HTTP_HOST'];
+$host = "https://lbt-wiki.magcho.com";
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -85,7 +86,7 @@ $host .= $_SERVER['HTTP_HOST'];
           <div class="col-xs-9 search-area">
             <div class="row">
               <div class="col-xs-2"><i class="fa fa-search fa-lg" ></i></div>
-                <form method="post" action="http://lbt.webcrow.jp/index.php?cmd=category">
+                <form method="post" action="https://lbt.webcrow.jp/index.php?cmd=category">
                   <input class="search-text col-xs-10" type="text" name="search" placeholder="検索フィード" />
                 </form>
             </div>
@@ -142,9 +143,10 @@ $host .= $_SERVER['HTTP_HOST'];
       </div>
     </div>
 
-    <div class="main-text-area-"> <!-- 記事本文 -->
-				<div>
-				<p><b>本Wikiは使われなくなったので令和元年7月31日を目安に閉鎖します、日程は前後する場合があります。</b></p>
+    <div class="main-text-area-">
+ 	<!-- 記事本文 -->
+	<div>
+	<p>サーバーを変えてしばらくは運用をつづけます</p>
         <p>LBT_wikiはLBT部員が知識やノウハウなど好きなことを今後のLBT部のために形に残る知識を共有するためのアンオフィシャルなサービスです。</p>
         <p>検索するには上の検索バーで検索できます</p>
         <p>知識を書くには左上の「三」みたいなボタンを押してみてください</p>
@@ -161,7 +163,7 @@ $host .= $_SERVER['HTTP_HOST'];
         <h3>LBT_Wiki</h3>
         <div class="text">
           このサイトの全てに対し無断転載を禁じます。
-          Copywrite 2017 LBT部のみなさん.
+          Copywrite 2017- LBT部のみなさん.
         </div>
       </div>
       <div class="links">

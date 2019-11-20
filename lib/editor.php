@@ -1,6 +1,7 @@
 <?php
-$host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
-$host .= $_SERVER['HTTP_HOST'];
+// $host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
+// $host .= $_SERVER['HTTP_HOST'];
+$host = "https://lbt-wiki.magcho.com";
 ?>
 <!doctype html>
 <html>

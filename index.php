@@ -1,7 +1,8 @@
 <?php
 global $host;
-$host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
-$host .= $_SERVER['HTTP_HOST'];
+//$host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
+//$host .= $_SERVER['HTTP_HOST'];
+$host = "https://lbt-wiki.magcho.com";
 /**
  * getのcmd属性に従っって処理を分ける
  * @return [type] [description]
@@ -16,21 +17,21 @@ function init(){
       require(__DIR__."/lib/view.php");
       break;
 
-    case "edit":
-      if(isset($_GET["page"])){
-        // 既存記事
-        require(__DIR__."/lib/database.php");
-        $info = fetchInfo($_GET["page"]);
-        if($info === false){
-          require(__DIR__."/lib/notfound.php");
-          return true;
-        }
-        require(__DIR__."/lib/editor.php");
-      }else{
-        // 新規記事
-        require(__DIR__."/lib/editor.php");
-      }
-      break;
+    // case "edit":
+    //   if(isset($_GET["page"])){
+    //     // 既存記事
+    //     require(__DIR__."/lib/database.php");
+    //     $info = fetchInfo($_GET["page"]);
+    //     if($info === false){
+    //       require(__DIR__."/lib/notfound.php");
+    //       return true;
+    //     }
+    //     require(__DIR__."/lib/editor.php");
+    //   }else{
+    //     // 新規記事
+    //     require(__DIR__."/lib/editor.php");
+    //   }
+    //   break;
 
     case "category":
       require(__DIR__."/lib/category.php");
@@ -44,6 +45,7 @@ function init(){
       require(__DIR__."/lib/admin.php");
       break;
 
+    case "edit":
     default:
       require(__DIR__."/lib/notfound.php");
       break;

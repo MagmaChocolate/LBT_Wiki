@@ -1,7 +1,8 @@
 <?php
 require_once(__DIR__.'/common.php');
-$host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
-$host .= $_SERVER['HTTP_HOST'];
+// $host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
+// $host .= $_SERVER['HTTPS_HOST'];
+$host = "https://lbt-wiki.magcho.com";
 
 $fetchData["title"] = 'カテゴリー一覧';
 require(__DIR__."/header.php");
@@ -35,7 +36,7 @@ div.contents-count{
       <div class="category-area">
         <p>現在LBT_Wikiに存在する全記事の一覧です。</p>
         <p>そのうち５０音順に並ぶ様にアップデート予定です</p>
-				<p>本wikiは使われなくなったので令和元年7月31日を目安に閉鎖します</p>
+	<p>サーバーを変えてしばらくは運用を続けます、編集機能は外しています。</p>
       </div>
     </div>
 

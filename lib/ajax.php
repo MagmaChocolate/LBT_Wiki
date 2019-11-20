@@ -1,7 +1,8 @@
 <?php
 global $host;
-$host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
-$host .= $_SERVER['HTTP_HOST'];
+// $host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
+// $host .= $_SERVER['HTTP_HOST'];
+$host = "https://lbt-wiki.magcho.com";
 require(__DIR__.'/database.php');
 
 /**
@@ -9,7 +10,7 @@ require(__DIR__.'/database.php');
  * {
  *  "id": (int), // 省略可、省略時は新規記事扱い
  *  "title": (string),
- *  "html": (sring) // 基本的に<body></body>の中身だけ送られる(<body></body>は来ない)
+ *  "html": (sring) // 基本的に<body></body>の中身だけ送られる(<body></body>は来ない)
  *  "description": (string), // 省略可
  *  "author": (string), // 省略可
  *  "eyecatch": (string) // 省略可

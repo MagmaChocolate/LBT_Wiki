@@ -1,39 +1,23 @@
-# mysql:
-#   image: mysql
-#   volumes:
-#     - "./mysql/lib:/var/lib/mysql"
-#     - "./mysql/conf.d:/etc/mysql/conf.d"
-#     - "./mysql/volume:/home/volume"
-#     #- "./mysql/import:/home/mysql"
-#
-#   environment:
-#     - MYSQL_ROOT_PASSWORD=password
-#   ports:
-#     - "3306:3306"
-#   container_name: lbt_wiki_mysql
-#
-# phpmyadmin:
-#   image: phpmyadmin/phpmyadmin
-#   environment:
-#     - PMA_ARBITRARY=1
-#     - PMA_HOST=mysql
-#     - PMA_USER=root
-#     - PMA_PASSWORD=password
-#   links:
-#     - mysql
-#   ports:
-#      - "8080:80"
-#   volumes:
-#      - ./phpmyadmin:/sessions
-#   container_name: lbt_wiki_phpmyadmin
-php-7.0:
-#ログは/var/log/apache2に吐かれる
-  build: .
-  ports:
-    - "80:80"
-  volumes:
-    - "../:/var/www/html"
-    - "./php/000-default.conf:/etc/apache2/sites-available/000-default.conf"
-  # links:
-  #   - mysql
-  container_name: lbt_wiki_php
+version: "3.5"
+services:
+  lbtwiki-apache:
+    build: .
+    expose: 
+      - 80
+    volumes:
+      - ../:/var/www/html
+      - ./php/000-default.conf:/etc/apache2/sites-available/000-default.conf
+    container_name: "lbt_wiki_php"
+    environment:
+      - VIRTUAL_HOST=lbt-wiki.magcho.com,www.lbt-wiki.magcho.com
+      - VIRTUAL_PORT=80
+      - LETSENCRYPT_HOST=lbt-wiki.magcho.com,www.lbt-wiki.magcho.com
+      - LETSENCRYPT_EMAIL=mail@magcho.com
+    networks:
+      - default
+      
+networks:
+  default:
+    external:
+      name: nginx-proxy
+

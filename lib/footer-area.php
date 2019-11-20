@@ -3,8 +3,9 @@
 -->
 <?php
 require_once(__DIR__.'/common.php');
-$host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
-$host .= $_SERVER['HTTP_HOST'];
+// $host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
+// $host .= $_SERVER['HTTP_HOST'];
+$host = "https://lbt-wiki.magcho.com";
 ?>
 <footer class="footer">  <!-- フッター -->
   <div class="last-edit">
@@ -38,7 +39,7 @@ $host .= $_SERVER['HTTP_HOST'];
   </div>
   <div class="links">
     <a href="<?=$host?>/help/">ヘルプ</a>
-    <a href="https://twitter.com/LiSA_sue0527">コンタクト</a>
+    <a href="https://github.com/magcho">github</a>
   </div>
 </footer>
 <!-- </div> -->
