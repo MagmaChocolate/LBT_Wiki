@@ -1,7 +1,8 @@
 <?php
 require_once(__DIR__.'/common.php');
-$host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
-$host .= $_SERVER['HTTP_HOST'];
+// $host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
+// $host .= $_SERVER['HTTPS_HOST'];
+$host = "https://lbt-wiki.magcho.com";
 
 $fetchData["title"] = 'カテゴリー一覧';
 require(__DIR__."/header.php");
