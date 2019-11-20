@@ -1,7 +1,8 @@
 <?php
 global $host;
-$host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
-$host .= $_SERVER['HTTP_HOST'];
+//$host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
+//$host .= $_SERVER['HTTP_HOST'];
+$host = "https://lbt-wiki.magcho.com";
 /**
  * getのcmd属性に従っって処理を分ける
  * @return [type] [description]

@@ -2,8 +2,9 @@
   relation: index.php
 -->
 <?php
-$host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
-$host .= $_SERVER['HTTP_HOST'];
+//$host  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
+//$host .= $_SERVER['HTTP_HOST'];
+$host = "https://lbt-wiki.magcho.com";
 ?>
 <!-- Include JQery -->
 <script src="<?php echo $host; ?>/resource/jquery/jquery-3.1.1.min.js"></script>
