@@ -2,15 +2,16 @@ version: "3.5"
 services:
   lbtwiki-apache:
     build: .
-    expose: 80
+    expose: 
+      - 80
     volumes:
       - ../:/var/www/html
       - ./php/000-default.conf:/etc/apache2/sites-available/000-default.conf
-      container_name: lbt_wiki_php
+    container_name: "lbt_wiki_php"
     environment:
       - VIRTUAL_HOST=lbt-wiki.magcho.com,www.lbt-wiki.magcho.com
       - VIRTUAL_PORT=80
-      - LETSENCRYPT_HOST=lbt-wiki.magcho.com,www-lbt-wiki.magcho.com
+      - LETSENCRYPT_HOST=lbt-wiki.magcho.com,www.lbt-wiki.magcho.com
       - LETSENCRYPT_EMAIL=mail@magcho.com
     networks:
       - default
